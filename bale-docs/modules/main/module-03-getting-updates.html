@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="راهنمای دریافت آپدیت‌ها در بازوی بله - getUpdates و وب‌هوک">
+  <title>دریافت آپدیت‌ها | مستندات بازوی بله</title>
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <div class="main-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <nav>
+        <h3>شروع سریع</h3>
+        <ul>
+          <li><a href="../../index.html">خانه</a></li>
+          <li><a href="module-01-bot-creation.html">ساخت بازو</a></li>
+          <li><a href="module-02-making-requests.html">ایجاد درخواست</a></li>
+          <li><a href="module-03-getting-updates.html" class="active">دریافت آپدیت‌ها</a></li>
+        </ul>
+
+        <h3>متدهای دریافت آپدیت</h3>
+        <ul>
+          <li><a href="module-04-update.html">Update</a></li>
+          <li><a href="module-05-getUpdates.html">getUpdates</a></li>
+          <li><a href="module-06-setWebhook.html">setWebhook</a></li>
+          <li><a href="module-07-deleteWebhook.html">deleteWebhook</a></li>
+          <li><a href="module-08-getWebhookInfo.html">getWebhookInfo</a></li>
+        </ul>
+
+        <h3>انواع داده‌ها</h3>
+        <ul>
+          <li><a href="module-09-user.html">User</a></li>
+          <li><a href="module-10-chat.html">Chat</a></li>
+          <li><a href="module-11-message.html">Message</a></li>
+          <li><a href="module-12-keyboard-types.html">انواع کیبورد</a></li>
+        </ul>
+
+        <h3>ارسال فایل‌ها</h3>
+        <ul>
+          <li><a href="module-13-sending-files.html">راهنمای ارسال فایل</a></li>
+        </ul>
+
+        <h3>مینی‌اپ‌ها</h3>
+        <ul>
+          <li><a href="../miniapp/index.html">معرفی مینی‌اپ</a></li>
+          <li><a href="../miniapp/module-01-intro.html">شروع به کار</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+      <header>
+        <h1>دریافت آپدیت‌ها</h1>
+      </header>
+
+      <article class="module-content">
+        <section>
+          <p>دو روش مجزا برای دریافت آپدیت‌ها در بازو وجود دارد:</p>
+          <ol>
+            <li><a href="module-05-getUpdates.html">getUpdates</a> (Long Polling)</li>
+            <li>وب‌هوک (Webhook)</li>
+          </ol>
+          
+          <p>آپدیت‌های دریافتی تا زمانی که بازو از طریق یکی از روش‌های بالا آن‌ها را دریافت کند در سرور ذخیره می‌شوند. در حال حاضر 2000 پیام آخر به مدت ۲۴ ساعت نگهداری می‌شود.</p>
+          
+          <p>در هر دو روش، آپدیت‌ها در قالب یک شیء JSON یکسان دریافت می‌شوند.</p>
+        </section>
+
+        <section>
+          <h2>مقایسه روش‌ها</h2>
+          
+          <h3>getUpdates (Long Polling)</h3>
+          <ul>
+            <li>ساده‌تر برای راه‌اندازی</li>
+            <li>مناسب برای توسعه و تست</li>
+            <li>نیاز به polling مداوم دارد</li>
+            <li>ممکن است تأخیر کمی داشته باشد</li>
+          </ul>
+          
+          <h3>وب‌هوک</h3>
+          <ul>
+            <li>نیاز به سرور با آدرس عمومی دارد</li>
+            <li>مناسب برای محیط تولید</li>
+            <li>دریافت آنی آپدیت‌ها</li>
+            <li>کارایی بالاتر</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>انتخاب روش مناسب</h2>
+          <p>اگر در حال توسعه یا تست هستید، از <a href="module-05-getUpdates.html">getUpdates</a> استفاده کنید. اگر بازوی شما در محیط تولید قرار دارد و به یک سرور با آدرس عمومی دسترسی دارید، وب‌هوک گزینه بهتری است.</p>
+        </section>
+
+        <section>
+          <h2>مرحله بعد</h2>
+          <p>برای اطلاعات بیشتر درباره ساختار آپدیت‌ها، بخش <a href="module-04-update.html">Update</a> را مطالعه کنید.</p>
+        </section>
+      </article>
+
+      <footer>
+        <p>
+          <a href="../../index.html">← بازگشت به صفحه اصلی</a> | 
+          <a href="module-02-making-requests.html">مرحله قبل: ایجاد درخواست</a> |
+          <a href="module-04-update.html">مرحله بعد: Update →</a>
+        </p>
+      </footer>
+    </main>
+  </div>
+
+  <script src="../../js/navigation.js"></script>
+</body>
+</html>

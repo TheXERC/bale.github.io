@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="راهنمای ایجاد درخواست به API بازوی بله - متدها، فرمت‌ها و ساختار پاسخ">
+  <title>ایجاد درخواست | مستندات بازوی بله</title>
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <div class="main-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <nav>
+        <h3>شروع سریع</h3>
+        <ul>
+          <li><a href="../../index.html">خانه</a></li>
+          <li><a href="module-01-bot-creation.html">ساخت بازو</a></li>
+          <li><a href="module-02-making-requests.html" class="active">ایجاد درخواست</a></li>
+          <li><a href="module-03-getting-updates.html">دریافت آپدیت‌ها</a></li>
+        </ul>
+
+        <h3>متدهای دریافت آپدیت</h3>
+        <ul>
+          <li><a href="module-04-update.html">Update</a></li>
+          <li><a href="module-05-getUpdates.html">getUpdates</a></li>
+          <li><a href="module-06-setWebhook.html">setWebhook</a></li>
+          <li><a href="module-07-deleteWebhook.html">deleteWebhook</a></li>
+          <li><a href="module-08-getWebhookInfo.html">getWebhookInfo</a></li>
+        </ul>
+
+        <h3>انواع داده‌ها</h3>
+        <ul>
+          <li><a href="module-09-user.html">User</a></li>
+          <li><a href="module-10-chat.html">Chat</a></li>
+          <li><a href="module-11-message.html">Message</a></li>
+          <li><a href="module-12-keyboard-types.html">انواع کیبورد</a></li>
+        </ul>
+
+        <h3>ارسال فایل‌ها</h3>
+        <ul>
+          <li><a href="module-13-sending-files.html">راهنمای ارسال فایل</a></li>
+        </ul>
+
+        <h3>مینی‌اپ‌ها</h3>
+        <ul>
+          <li><a href="../miniapp/index.html">معرفی مینی‌اپ</a></li>
+          <li><a href="../miniapp/module-01-intro.html">شروع به کار</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+      <header>
+        <h1>ایجاد درخواست</h1>
+      </header>
+
+      <article class="module-content">
+        <section>
+          <p>تمامی درخواست‌های مربوط به API بازوی بله باید در بستر HTTPS و به این شکل فراخوانی شوند:</p>
+          <pre><code>https://tapi.bale.ai/bot&lt;token&gt;/METHOD_NAME</code></pre>
+          
+          <p>برای مثال به درخواست زیر توجه کنید:</p>
+          <p><a href="https://tapi.bale.ai/bot123456789:abcdIuZmK5qNEm2A1BhUaAg7MPJv1O9KCcBQB2ro/getMe" target="_blank" rel="noreferrer">درخواست نمونه getMe</a></p>
+        </section>
+
+        <section>
+          <h2>متدهای HTTP پشتیبانی شده</h2>
+          <p>از دو متد <code>GET</code> و <code>POST</code> و همچنین چهار روش زیر برای ارسال پارامتر در ریکوئست‌های بازوی بله پشتیبانی می‌شود:</p>
+          <ul>
+            <li>URL query string</li>
+            <li>application/x-www-form-urlencoded</li>
+            <li>application/json (به جز برای آپلود فایل)</li>
+            <li>multipart/form-data (برای آپلود فایل استفاده کنید)</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>ساختار پاسخ</h2>
+          <p>پاسخ حاوی یک شیء JSON است، که همیشه یک فیلد <code>ok</code> از جنس boolean دارد. پاسخ همچنین ممکن است دارای یک فیلد توضیحات (<code>description</code>) باشد که برای توضیح نتیجه‌ی درخواست استفاده می‌شود.</p>
+          
+          <h3>پاسخ موفق</h3>
+          <p>اگر فیلد <code>ok</code> برابر <em>true</em> باشد، به این معنی هست که درخواست موفق بوده و نتیجه درخواست را می‌توان در فیلد <code>result</code> یافت.</p>
+          
+          <h3>پاسخ ناموفق</h3>
+          <p>در زمان ناموفق بودن درخواست، مقدار فیلد <code>ok</code> برابر <em>false</em> بوده و یک فیلد <code>error_code</code> از نوع integer که بیانگر خطای رخ داده است در پاسخ وجود دارد. برخی از خطاها ممکن است یک فیلد اختیاری <code>parameters</code> از نوع <a href="module-xx-response-parameters.html">ResponseParameters</a> داشته باشند، که می‌تواند به مدیریت خودکار خطا کمک کند.</p>
+        </section>
+
+        <section>
+          <h2>نکات مهم</h2>
+          <ul>
+            <li>هیچ حساسیتی نسبت به بزرگ یا کوچک بودن حروف در API بازوی بله وجود ندارد</li>
+            <li>همه درخواست‌ها باید با فرمت UTF-8 ایجاد شوند</li>
+            <li>توکن باید در URL قرار داده شود</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>مثال‌ها</h2>
+          
+          <h3>درخواست GET با query string</h3>
+          <pre><code>https://tapi.bale.ai/bot123456789:abcdIuZmK5qNEm2A1BhUaAg7MPJv1O9KCcBQB2ro/getMe</code></pre>
+          
+          <h3>درخواست POST با JSON</h3>
+          <pre><code>POST https://tapi.bale.ai/bot123456789:abcdIuZmK5qNEm2A1BhUaAg7MPJv1O9KCcBQB2ro/sendMessage
+Content-Type: application/json
+
+{
+  "chat_id": 123456789,
+  "text": "سلام!"
+}</code></pre>
+        </section>
+
+        <section>
+          <h2>مرحله بعد</h2>
+          <p>پس از آشنایی با نحوه ایجاد درخواست، می‌توانید با روش‌های <a href="module-03-getting-updates.html">دریافت آپدیت‌ها</a> آشنا شوید.</p>
+        </section>
+      </article>
+
+      <footer>
+        <p>
+          <a href="../../index.html">← بازگشت به صفحه اصلی</a> | 
+          <a href="module-01-bot-creation.html">مرحله قبل: ساخت بازو</a> |
+          <a href="module-03-getting-updates.html">مرحله بعد: دریافت آپدیت‌ها →</a>
+        </p>
+      </footer>
+    </main>
+  </div>
+
+  <script src="../../js/navigation.js"></script>
+</body>
+</html>

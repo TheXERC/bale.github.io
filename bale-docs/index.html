@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="مستندات کامل API بازوی بله - راهنمای توسعه بات و مینی‌اپ برای پلتفرم بله">
+  <title>مستندات بازوی بله | Bale Bot API Docs</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="main-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <nav>
+        <h3>شروع سریع</h3>
+        <ul>
+          <li><a href="index.html">خانه</a></li>
+          <li><a href="modules/main/module-01-bot-creation.html">ساخت بازو</a></li>
+          <li><a href="modules/main/module-02-making-requests.html">ایجاد درخواست</a></li>
+          <li><a href="modules/main/module-03-getting-updates.html">دریافت آپدیت‌ها</a></li>
+        </ul>
+
+        <h3>متدهای دریافت آپدیت</h3>
+        <ul>
+          <li><a href="modules/main/module-04-update.html">Update</a></li>
+          <li><a href="modules/main/module-05-getUpdates.html">getUpdates</a></li>
+          <li><a href="modules/main/module-06-setWebhook.html">setWebhook</a></li>
+          <li><a href="modules/main/module-07-deleteWebhook.html">deleteWebhook</a></li>
+          <li><a href="modules/main/module-08-getWebhookInfo.html">getWebhookInfo</a></li>
+        </ul>
+
+        <h3>انواع داده‌ها</h3>
+        <ul>
+          <li><a href="modules/main/module-09-user.html">User</a></li>
+          <li><a href="modules/main/module-10-chat.html">Chat</a></li>
+          <li><a href="modules/main/module-11-message.html">Message</a></li>
+          <li><a href="modules/main/module-12-keyboard-types.html">انواع کیبورد</a></li>
+        </ul>
+
+        <h3>ارسال فایل‌ها</h3>
+        <ul>
+          <li><a href="modules/main/module-13-sending-files.html">راهنمای ارسال فایل</a></li>
+        </ul>
+
+        <h3>مینی‌اپ‌ها</h3>
+        <ul>
+          <li><a href="modules/miniapp/index.html">معرفی مینی‌اپ</a></li>
+          <li><a href="modules/miniapp/module-01-intro.html">شروع به کار</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+      <header>
+        <h1>مستندات API بازوی بله</h1>
+        <p>راهنمای جامع توسعه بازو (بات) و مینی‌اپ برای پلتفرم بله</p>
+      </header>
+
+      <article class="module-content">
+        <section>
+          <h2>خوش آمدید</h2>
+          <p>این مستندات رسمی API بازوی بله است. API بازوی بله بر پایهٔ API بات تلگرام و با اعمال تغییراتی جزئی طراحی شده است؛ بنابراین می‌توانید از کتابخانه‌های متعددی که برای توسعهٔ بات تلگرام در زبان‌های مختلف ارائه شده‌اند، برای ساخت بازو در بله نیز استفاده کنید.</p>
+          <p>این API از ساختاری ساده و رایج مبتنی بر HTTP بهره می‌برد و به‌راحتی قابل استفاده است.</p>
+        </section>
+
+        <section>
+          <h2>ساختار مستندات</h2>
+          <p>این مستندات به صورت ماژولار طراحی شده است تا خواندن و درک آن برای انسان و مدل‌های زبانی بزرگ (LLM) آسان باشد. هر بخش به صورت جداگانه در فایل‌های HTML مجزا قرار دارد.</p>
+          
+          <h3>بخش‌های اصلی:</h3>
+          <ul>
+            <li><strong>شروع سریع:</strong> شامل ساخت بازو، ایجاد درخواست و دریافت آپدیت‌ها</li>
+            <li><strong>متدهای دریافت آپدیت:</strong> توضیحات کامل getUpdates، setWebhook و سایر متدها</li>
+            <li><strong>انواع داده‌ها:</strong> معرفی تمام انواع داده‌های مورد استفاده در API</li>
+            <li><strong>ارسال فایل‌ها:</strong> راهنمای کامل آپلود و ارسال فایل</li>
+            <li><strong>مینی‌اپ‌ها:</strong> مستندات توسعه مینی‌اپ برای بله</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>لینک‌های مفید</h2>
+          <ul>
+            <li><a href="https://ble.ir/botfather" target="_blank" rel="noreferrer">بازوی پدر (@botfather)</a> - برای ساخت بازوی جدید</li>
+            <li><a href="https://tapi.bale.ai/" target="_blank" rel="noreferrer">API Endpoint</a> - نقطه دسترسی API</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>نحوه استفاده از این مستندات</h2>
+          <p>برای شروع، پیشنهاد می‌کنیم از بخش <a href="modules/main/module-01-bot-creation.html">ساخت بازو</a> آغاز کنید. سپس با نحوه <a href="modules/main/module-02-making-requests.html">ایجاد درخواست</a> آشنا شوید و در نهایت روش‌های <a href="modules/main/module-03-getting-updates.html">دریافت آپدیت‌ها</a> را یاد بگیرید.</p>
+          <p>هر ماژول به صورت مستقل قابل مطالعه است و شامل تمام اطلاعات لازم برای آن موضوع خاص می‌باشد.</p>
+        </section>
+      </article>
+
+      <footer>
+        <p>مستندات بازوی بله | طراحی شده برای توسعه‌دهندگان فارسی‌زبان</p>
+        <p class="text-sm text-muted">این مستندات بر اساس محتوای رسمی https://docs.bale.ai تهیه شده است.</p>
+      </footer>
+    </main>
+  </div>
+
+  <script src="js/navigation.js"></script>
+</body>
+</html>
