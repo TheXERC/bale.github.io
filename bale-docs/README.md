@@ -1,8 +1,8 @@
-# مستندات بازوی بله - Bale Docs
+# مستندات بازوی بله | Bale Bot API Docs
 
-به مستندات ماژولار و LLM-friendly بازوی بله خوش آمدید. این مستندات به صورت modular طراحی شده‌اند تا خوانایی و دسترسی به اطلاعات را برای انسان‌ها و مدل‌های زبانی بزرگ (LLM) آسان‌تر کنند.
+این مخزن شامل مستندات ماژولار و LLM-friendly برای API بازوی بله است.
 
-## ساختار پروژه
+## 📁 ساختار پروژه
 
 ```
 bale-docs/
@@ -10,87 +10,90 @@ bale-docs/
 ├── css/
 │   └── style.css          # استایل‌های مشترک
 ├── js/
-│   └── navigation.js      # اسکریپت‌های ناوبری
-├── modules/
-│   ├── main/              # مستندات اصلی بازو
-│   │   ├── module-01-bot-creation.html
-│   │   ├── module-02-making-requests.html
-│   │   └── ...
-│   └── miniapp/           # مستندات مینی‌اپ
-│       ├── module-m1-introduction.html
-│       └── ...
-└── README.md              # این فایل
+│   └── navigation.js      # ناوبری ساده
+└── modules/
+    ├── main/              # مستندات اصلی بات
+    │   ├── module-01-bot-creation.html
+    │   ├── module-02-making-requests.html
+    │   ├── module-03-getting-updates.html
+    │   ├── module-04-update.html
+    │   ├── module-05-getUpdates.html
+    │   ├── module-06-setWebhook.html
+    │   ├── module-07-deleteWebhook.html
+    │   ├── module-08-getWebhookInfo.html
+    │   └── module-09-user.html
+    └── miniapp/           # مستندات مینی‌اپ (در حال توسعه)
 ```
 
-## فهرست مستندات
+## 🚀 استقرار در GitHub Pages
 
-### مستندات اصلی بازو (Main Bot Docs)
-
-#### مفاهیم پایه
-- [ماژول ۱: ساخت بازو](modules/main/module-01-bot-creation.html)
-- [ماژول ۲: ایجاد درخواست](modules/main/module-02-making-requests.html)
-- [ماژول ۳: دریافت آپدیت‌ها](modules/main/module-03-getting-updates.html)
-- [ماژول ۴: متد Update](modules/main/module-04-update.html)
-- [ماژول ۵: متد getUpdates](modules/main/module-05-getupdates.html)
-
-#### متدهای Webhook
-- [ماژول ۶: setWebhook](modules/main/module-06-setwebhook.html)
-- [ماژول ۷: deleteWebhook](modules/main/module-07-deletewebhook.html)
-- [ماژول ۸: getWebhookInfo](modules/main/module-08-getwebhookinfo.html)
-
-#### انواع داده‌ها (Types)
-- User, Chat, Message و سایر انواع در ماژول‌های جداگانه
-
-### مستندات مینی‌اپ (MiniApp Docs)
-
-#### مقدمات
-- [ماژول M1: مقدمه مینی‌اپ](modules/miniapp/module-m1-introduction.html)
-- [ماژول M2: مثال‌ها](modules/miniapp/module-m2-examples.html)
-- [ماژول M3: راهنمای طراحی](modules/miniapp/module-m3-design-guide.html)
-
-#### پیاده‌سازی
-- [ماژول M6: پیاده‌سازی](modules/miniapp/module-m6-implementation.html)
-- [ماژول M7: شیء WebApp](modules/miniapp/module-m7-webapp.html)
-- [ماژول M8: متدها](modules/miniapp/module-m8-methods.html)
-
-## ویژگی‌های این مستندات
-
-### LLM-Friendly
-- ساختار معنایی و تمیز HTML
-- محتوای modular و جدا شده
-- بدون JavaScript سنگین
-- متادیتای کامل برای هر ماژول
-
-### Modular Design
-- هر بخش یک فایل مستقل
-- بارگذاری سریع‌تر
-- نگهداری آسان‌تر
-- قابلیت جستجوی بهتر
-
-### فارسی
-- تمام محتوا به زبان فارسی (همانند مستندات اصلی)
-- پشتیبانی کامل از RTL
-
-## نحوه استفاده
-
-### مشاهده مستندات
-فایل `index.html` را در مرورگر خود باز کنید یا پروژه را روی GitHub Pages deploy کنید.
-
-### Deploy روی GitHub Pages
-1. این repository را به GitHub push کنید
+1. این مخزن را به GitHub push کنید
 2. به Settings > Pages بروید
-3. Branch را روی `main` و folder را روی `/ (root)` تنظیم کنید
-4. منتظر بمانید تا سایت deploy شود
+3. Branch `main` و پوشه `/ (root)` را انتخاب کنید
+4. مستندات شما در آدرس `https://username.github.io/repo-name/` قابل دسترسی خواهد بود
 
-## وضعیت پروژه
+## ✨ ویژگی‌ها
 
-برای مشاهده وضعیت تکمیل ماژول‌ها، فایل [ROADMAP.md](ROADMAP.md) را مطالعه کنید.
+- **ماژولار**: هر موضوع در فایل HTML جداگانه
+- **LLM-Friendly**: ساختار معنایی تمیز، بدون JavaScript سنگین
+- **RTL**: پشتیبانی کامل از زبان فارسی
+- **Responsive**: طراحی واکنش‌گرا برای موبایل و دسکتاپ
+- **Dark Mode**: پشتیبانی خودکار از حالت تیره
 
-## منابع اصلی
+## 📋 نقشه راه (Roadmap)
 
-- [مستندات اصلی بازوی بله](https://docs.bale.ai)
-- [مستندات مینی‌اپ بله](https://docs.bale.ai/miniapp)
+### فاز ۱: پایه‌گذاری ✅ تکمیل شده
+- [x] ایجاد ساختار پوشه‌ها
+- [x] فایل CSS اصلی
+- [x] فایل JavaScript ناوبری
+- [x] صفحه اصلی (index.html)
+- [x] ماژول‌های ۱-۳: شروع سریع
+- [x] ماژول‌های ۴-۸: متدهای دریافت آپدیت
+- [x] ماژول ۹: نوع داده User
 
-## مجوز
+### فاز ۲: انواع داده‌ها (در حال انجام)
+- [ ] ماژول ۱۰: Chat
+- [ ] ماژول ۱۱: Message
+- [ ] ماژول ۱۲: انواع کیبورد
+- [ ] سایر انواع داده‌ها
 
-این مستندات بر اساس مستندات رسمی بازوی بله ایجاد شده‌اند.
+### فاز ۳: ارسال فایل‌ها
+- [ ] راهنمای ارسال فایل
+- [ ] انواع InputMedia
+
+### فاز ۴-۸: مستندات اصلی (ادامه)
+- [ ] متدهای ارسال پیام
+- [ ] متدهای مدیریت چت
+- [ ] متدهای مدیریت فایل
+- [ ] پرداخت و invoicing
+- [ ] خطاها و ResponseParameters
+
+### فاز ۹-۱۲: مستندات مینی‌اپ
+- [ ] معرفی مینی‌اپ
+- [ ] شروع به کار
+- [ ] WebAppData
+- [ ] دکمه‌های مینی‌اپ
+- [ ] نمونه‌ کدها
+
+### فاز ۱۳: نهایی‌سازی
+- [ ] یکپارچه‌سازی تمام ماژول‌ها
+- [ ] تست نهایی
+- [ ] بهینه‌سازی برای SEO
+
+## 📝 نحوه استفاده
+
+هر ماژول به صورت مستقل قابل مطالعه است. برای مشاهده مستندات:
+
+1. فایل `index.html` را در مرورگر باز کنید
+2. از منوی سمت راست برای ناوبری بین ماژول‌ها استفاده کنید
+3. یا مستقیماً به فایل‌های ماژول مراجعه کنید
+
+## 🔗 لینک‌های مفید
+
+- [مستندات اصلی بله](https://docs.bale.ai)
+- [بات پدر (@botfather)](https://ble.ir/botfather)
+- [API Endpoint](https://tapi.bale.ai)
+
+## 📄 مجوز
+
+این مستندات بر اساس محتوای رسمی https://docs.bale.ai تهیه شده است.

@@ -1,110 +1,104 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ماژول ۱: ساخت بازو - مستندات بازوی بله</title>
-    <link rel="stylesheet" href="../../css/style.css">
-    <meta name="description" content="مستندات ساخت بازو در بله - نحوه دریافت توکن و تنظیمات اولیه">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="راهنمای ساخت بازو (بات) در بله - مرحله اول توسعه بات با BotFather">
+  <title>ساخت بازو | مستندات بازوی بله</title>
+  <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Sidebar Navigation -->
-        <aside class="sidebar">
-            <h2>فهرست مستندات</h2>
-            <nav>
-                <ul>
-                    <li><a href="../../index.html">صفحه اصلی</a></li>
-                    <li><a href="#bot-creation">ساخت بازو</a></li>
-                    <li><a href="module-02-making-requests.html">بعدی: ایجاد درخواست →</a></li>
-                </ul>
-            </nav>
-        </aside>
+  <div class="main-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <nav>
+        <h3>شروع سریع</h3>
+        <ul>
+          <li><a href="../../index.html">خانه</a></li>
+          <li><a href="module-01-bot-creation.html" class="active">ساخت بازو</a></li>
+          <li><a href="module-02-making-requests.html">ایجاد درخواست</a></li>
+          <li><a href="module-03-getting-updates.html">دریافت آپدیت‌ها</a></li>
+        </ul>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <section id="bot-creation" class="module-container">
-                <h1>ساخت بازو</h1>
-                
-                <p>برای ساخت یک بازو در بله، باید مراحل زیر را دنبال کنید:</p>
+        <h3>متدهای دریافت آپدیت</h3>
+        <ul>
+          <li><a href="module-04-update.html">Update</a></li>
+          <li><a href="module-05-getUpdates.html">getUpdates</a></li>
+          <li><a href="module-06-setWebhook.html">setWebhook</a></li>
+          <li><a href="module-07-deleteWebhook.html">deleteWebhook</a></li>
+          <li><a href="module-08-getWebhookInfo.html">getWebhookInfo</a></li>
+        </ul>
 
-                <h2>دریافت توکن از @botfather</h2>
-                <p>برای شروع کار با بازوها، ابتدا باید یک توکن منحصر به فرد از @botfather دریافت کنید. این توکن برای احراز هویت بازوی شما استفاده می‌شود.</p>
+        <h3>انواع داده‌ها</h3>
+        <ul>
+          <li><a href="module-09-user.html">User</a></li>
+          <li><a href="module-10-chat.html">Chat</a></li>
+          <li><a href="module-11-message.html">Message</a></li>
+          <li><a href="module-12-keyboard-types.html">انواع کیبورد</a></li>
+        </ul>
 
-                <h3>مراحل دریافت توکن:</h3>
-                <ol>
-                    <li>وارد گفتگو با @botfather شوید</li>
-                    <li>دستور <code>/newbot</code> را ارسال کنید</li>
-                    <li>یک نام برای بازوی خود انتخاب کنید</li>
-                    <li>یک نام کاربری (username) برای بازوی خود انتخاب کنید که باید با کلمه <code>bot</code> پایان یابد</li>
-                    <li>توکن دریافتی را ذخیره کنید</li>
-                </ol>
+        <h3>ارسال فایل‌ها</h3>
+        <ul>
+          <li><a href="module-13-sending-files.html">راهنمای ارسال فایل</a></li>
+        </ul>
 
-                <h3>نمونه توکن:</h3>
-                <pre><code>1234567890:ABCdefGHIjklMNOpqrsTUVwxyz</code></pre>
+        <h3>مینی‌اپ‌ها</h3>
+        <ul>
+          <li><a href="../miniapp/index.html">معرفی مینی‌اپ</a></li>
+          <li><a href="../miniapp/module-01-intro.html">شروع به کار</a></li>
+        </ul>
+      </nav>
+    </aside>
 
-                <div class="warning">
-                    <p><strong>هشدار مهم:</strong> توکن خود را با کسی به اشتراک نگذارید و آن را در کدهای خود به صورت hard-coded قرار ندهید.</p>
-                </div>
+    <!-- Main Content -->
+    <main class="content">
+      <header>
+        <h1>ساخت بازو</h1>
+      </header>
 
-                <h2>ساختار کلی API</h2>
-                <p>API بازوی بله بر اساس پروتکل HTTPS کار می‌کند. تمام درخواست‌ها باید به آدرس زیر ارسال شوند:</p>
-                
-                <pre><code>https://tapi.bale.ai/bot&lt;TOKEN&gt;/&lt;METHOD&gt;</code></pre>
+      <article class="module-content">
+        <section>
+          <p>در اولین مرحله ساخت بازو باید با بازوی پدر به نشانی <a href="https://ble.ir/botfather" target="_blank" rel="noreferrer">@botfather</a> در بله گفتگو کنید و بازوی خودتان را بسازید. هنگام ساخت بازو، توکن احراز هویت منحصر به فردی به آن تعلق می‌گیرد.</p>
+          
+          <p>توکن‌ها با فرمتی مشابه زیر هستند:</p>
+          <pre><code>123456789:abcdIuZmK5qNEm2A1BhUaAg7MPJv1O9KCcBQB2ro</code></pre>
+        </section>
 
-                <p>که در آن:</p>
-                <ul>
-                    <li><code>&lt;TOKEN&gt;</code>: توکن دریافتی از @botfather</li>
-                    <li><code>&lt;METHOD&gt;</code>: نام متدی که می‌خواهید فراخوانی کنید (مثلاً sendMessage)</li>
-                </ul>
+        <section>
+          <h2>مراحل ساخت بازو</h2>
+          <ol>
+            <li>وارد بله شوید و به آدرس <a href="https://ble.ir/botfather" target="_blank" rel="noreferrer">@botfather</a> بروید</li>
+            <li>دستور <code>/newbot</code> را ارسال کنید</li>
+            <li>یک نام برای بازوی خود انتخاب کنید</li>
+            <li>یک نام کاربری (username) برای بازوی خود انتخاب کنید که باید با کلمه <code>bot</code> تمام شود</li>
+            <li>توکن احراز هویت را دریافت و ذخیره کنید</li>
+          </ol>
+        </section>
 
-                <h2>مثال ارسال درخواست</h2>
-                <pre><code>curl -X POST https://tapi.bale.ai/bot1234567890:ABCdefGHIjklMNOpqrsTUVwxyz/sendMessage \
-  -d "chat_id=123456789" \
-  -d "text=سلام!"</code></pre>
+        <section>
+          <h2>نکات مهم</h2>
+          <ul>
+            <li>توکن احراز هویت خود را محرمانه نگه دارید و آن را با کسی به اشتراک نگذارید</li>
+            <li>اگر توکن شما فاش شد، می‌توانید از طریق @botfather آن را باطل کرده و توکن جدید دریافت کنید</li>
+            <li>نام کاربری بازو باید منحصر به فرد باشد و قبلاً توسط شخص دیگری استفاده نشده باشد</li>
+          </ul>
+        </section>
 
-                <h2>پارامترهای عمومی</h2>
-                <p>بیشتر متدهای API از پارامترهای زیر پشتیبانی می‌کنند:</p>
+        <section>
+          <h2>مرحله بعد</h2>
+          <p>پس از ساخت بازو و دریافت توکن، می‌توانید شروع به <a href="module-02-making-requests.html">ایجاد درخواست</a> به API بله کنید.</p>
+        </section>
+      </article>
 
-                <table>
-                    <thead>
-                        <tr>
-                            <th>پارامتر</th>
-                            <th>نوع</th>
-                            <th>الزامی</th>
-                            <th>توضیحات</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>chat_id</td>
-                            <td>String یا Integer</td>
-                            <td>بله</td>
-                            <td>شناسه منحصر به فرد گفتگو هدف یا نام کاربری کانال هدف (با فرمت @channelusername)</td>
-                        </tr>
-                        <tr>
-                            <td>text</td>
-                            <td>String</td>
-                            <td>بستگی دارد</td>
-                            <td>متن پیام بین ۱ تا ۴۰۹۶ کاراکتر</td>
-                        </tr>
-                    </tbody>
-                </table>
+      <footer>
+        <p>
+          <a href="../../index.html">← بازگشت به صفحه اصلی</a> | 
+          <a href="module-02-making-requests.html">مرحله بعد: ایجاد درخواست →</a>
+        </p>
+      </footer>
+    </main>
+  </div>
 
-                <h2>خطاهای رایج</h2>
-                <ul>
-                    <li><strong>401 Unauthorized:</strong> توکن نامعتبر است</li>
-                    <li><strong>400 Bad Request:</strong> پارامترهای درخواست ناقص یا نامعتبر هستند</li>
-                    <li><strong>429 Too Many Requests:</strong> تعداد درخواست‌ها بیش از حد مجاز است</li>
-                </ul>
-
-                <div class="navigation-links">
-                    <p>ماژول بعدی: <a href="module-02-making-requests.html">ایجاد درخواست</a></p>
-                </div>
-            </section>
-        </main>
-    </div>
-
-    <script src="../../js/navigation.js"></script>
+  <script src="../../js/navigation.js"></script>
 </body>
 </html>

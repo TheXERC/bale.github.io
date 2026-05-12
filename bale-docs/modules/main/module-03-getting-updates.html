@@ -1,203 +1,115 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ماژول ۳: دریافت آپدیت‌ها - مستندات بازوی بله</title>
-    <link rel="stylesheet" href="../../css/style.css">
-    <meta name="description" content="مستندات دریافت آپدیت‌ها از بازوی بله - Update و getUpdates">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="راهنمای دریافت آپدیت‌ها در بازوی بله - getUpdates و وب‌هوک">
+  <title>دریافت آپدیت‌ها | مستندات بازوی بله</title>
+  <link rel="stylesheet" href="../../css/style.css">
 </head>
 <body>
-    <div class="container">
-        <!-- Sidebar Navigation -->
-        <aside class="sidebar">
-            <h2>فهرست مستندات</h2>
-            <nav>
-                <ul>
-                    <li><a href="../../index.html">صفحه اصلی</a></li>
-                    <li><a href="module-02-making-requests.html">← قبلی: ایجاد درخواست</a></li>
-                    <li><a href="#getting-updates">دریافت آپدیت‌ها</a></li>
-                    <li><a href="module-04-update.html">بعدی: Update →</a></li>
-                </ul>
-            </nav>
-        </aside>
+  <div class="main-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <nav>
+        <h3>شروع سریع</h3>
+        <ul>
+          <li><a href="../../index.html">خانه</a></li>
+          <li><a href="module-01-bot-creation.html">ساخت بازو</a></li>
+          <li><a href="module-02-making-requests.html">ایجاد درخواست</a></li>
+          <li><a href="module-03-getting-updates.html" class="active">دریافت آپدیت‌ها</a></li>
+        </ul>
 
-        <!-- Main Content -->
-        <main class="main-content">
-            <section id="getting-updates" class="module-container">
-                <h1>دریافت آپدیت‌ها</h1>
-                
-                <p>برای دریافت رویدادها و پیام‌های ارسالی به بازو، دو روش اصلی وجود دارد:</p>
-                <ol>
-                    <li><strong>Long Polling:</strong> استفاده از متد getUpdates</li>
-                    <li><strong>Webhook:</strong> دریافت خودکار آپدیت‌ها از طریق webhook</li>
-                </ol>
+        <h3>متدهای دریافت آپدیت</h3>
+        <ul>
+          <li><a href="module-04-update.html">Update</a></li>
+          <li><a href="module-05-getUpdates.html">getUpdates</a></li>
+          <li><a href="module-06-setWebhook.html">setWebhook</a></li>
+          <li><a href="module-07-deleteWebhook.html">deleteWebhook</a></li>
+          <li><a href="module-08-getWebhookInfo.html">getWebhookInfo</a></li>
+        </ul>
 
-                <h2>مقایسه روش‌ها</h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ویژگی</th>
-                            <th>Long Polling</th>
-                            <th>Webhook</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>راه‌اندازی</td>
-                            <td>ساده</td>
-                            <td>نیاز به HTTPS</td>
-                        </tr>
-                        <tr>
-                            <td>مناسب برای</td>
-                            <td>توسعه و تست</td>
-                            <td>محیط تولید</td>
-                        </tr>
-                        <tr>
-                            <td>مصرف منابع</td>
-                            <td>بیشتر</td>
-                            <td>بهینه‌تر</td>
-                        </tr>
-                        <tr>
-                            <td>تاخیر</td>
-                            <td>کم</td>
-                            <td>بسیار کم</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <h3>انواع داده‌ها</h3>
+        <ul>
+          <li><a href="module-09-user.html">User</a></li>
+          <li><a href="module-10-chat.html">Chat</a></li>
+          <li><a href="module-11-message.html">Message</a></li>
+          <li><a href="module-12-keyboard-types.html">انواع کیبورد</a></li>
+        </ul>
 
-                <h2>شیء Update</h2>
-                <p>هر آپدیت دریافتی یک شیء <code>Update</code> است که شامل اطلاعات رویداد رخ داده می‌باشد.</p>
+        <h3>ارسال فایل‌ها</h3>
+        <ul>
+          <li><a href="module-13-sending-files.html">راهنمای ارسال فایل</a></li>
+        </ul>
 
-                <h3>ساختار Update</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>فیلد</th>
-                            <th>نوع</th>
-                            <th>توضیحات</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>update_id</td>
-                            <td>Integer</td>
-                            <td>شناسه یکتای آپدیت (از صفر شروع می‌شود)</td>
-                        </tr>
-                        <tr>
-                            <td>message</td>
-                            <td>Message</td>
-                            <td>پیام دریافتی (اختیاری)</td>
-                        </tr>
-                        <tr>
-                            <td>callback_query</td>
-                            <td>CallbackQuery</td>
-                            <td>کوئری دکمه اینلاین (اختیاری)</td>
-                        </tr>
-                        <tr>
-                            <td>edited_message</td>
-                            <td>Message</td>
-                            <td>پیام ویرایش شده (اختیاری)</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <h3>مینی‌اپ‌ها</h3>
+        <ul>
+          <li><a href="../miniapp/index.html">معرفی مینی‌اپ</a></li>
+          <li><a href="../miniapp/module-01-intro.html">شروع به کار</a></li>
+        </ul>
+      </nav>
+    </aside>
 
-                <h2>نمونه Update</h2>
-                <pre><code>{
-  "update_id": 123456789,
-  "message": {
-    "message_id": 42,
-    "from": {
-      "id": 987654321,
-      "is_bot": false,
-      "first_name": "کاربر",
-      "username": "user_example"
-    },
-    "chat": {
-      "id": 987654321,
-      "first_name": "کاربر",
-      "type": "private"
-    },
-    "date": 1234567890,
-    "text": "/start"
-  }
-}</code></pre>
+    <!-- Main Content -->
+    <main class="content">
+      <header>
+        <h1>دریافت آپدیت‌ها</h1>
+      </header>
 
-                <h2>متد getUpdates</h2>
-                <p>این متد برای دریافت آپدیت‌ها از طریق Long Polling استفاده می‌شود.</p>
+      <article class="module-content">
+        <section>
+          <p>دو روش مجزا برای دریافت آپدیت‌ها در بازو وجود دارد:</p>
+          <ol>
+            <li><a href="module-05-getUpdates.html">getUpdates</a> (Long Polling)</li>
+            <li>وب‌هوک (Webhook)</li>
+          </ol>
+          
+          <p>آپدیت‌های دریافتی تا زمانی که بازو از طریق یکی از روش‌های بالا آن‌ها را دریافت کند در سرور ذخیره می‌شوند. در حال حاضر 2000 پیام آخر به مدت ۲۴ ساعت نگهداری می‌شود.</p>
+          
+          <p>در هر دو روش، آپدیت‌ها در قالب یک شیء JSON یکسان دریافت می‌شوند.</p>
+        </section>
 
-                <h3>پارامترها</h3>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>پارامتر</th>
-                            <th>نوع</th>
-                            <th>الزامی</th>
-                            <th>توضیحات</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>offset</td>
-                            <td>Integer</td>
-                            <td>خیر</td>
-                            <td>شناسه آپدیت بعدی که باید دریافت شود. معمولاً برابر با update_id + 1 آخرین آپدیت پردازش شده</td>
-                        </tr>
-                        <tr>
-                            <td>limit</td>
-                            <td>Integer</td>
-                            <td>خیر</td>
-                            <td>حداکثر تعداد آپدیت‌های قابل دریافت (پیش‌فرض: ۱۰۰)</td>
-                        </tr>
-                        <tr>
-                            <td>timeout</td>
-                            <td>Integer</td>
-                            <td>خیر</td>
-                            <td>زمان انتظار به ثانیه برای Long Polling (پیش‌فرض: ۰)</td>
-                        </tr>
-                        <tr>
-                            <td>allowed_updates</td>
-                            <td>Array of String</td>
-                            <td>خیر</td>
-                            <td>لیست انواع آپدیت‌های مجاز</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <section>
+          <h2>مقایسه روش‌ها</h2>
+          
+          <h3>getUpdates (Long Polling)</h3>
+          <ul>
+            <li>ساده‌تر برای راه‌اندازی</li>
+            <li>مناسب برای توسعه و تست</li>
+            <li>نیاز به polling مداوم دارد</li>
+            <li>ممکن است تأخیر کمی داشته باشد</li>
+          </ul>
+          
+          <h3>وب‌هوک</h3>
+          <ul>
+            <li>نیاز به سرور با آدرس عمومی دارد</li>
+            <li>مناسب برای محیط تولید</li>
+            <li>دریافت آنی آپدیت‌ها</li>
+            <li>کارایی بالاتر</li>
+          </ul>
+        </section>
 
-                <h3>مثال استفاده</h3>
-                <pre><code>curl "https://tapi.bale.ai/bot1234567890:ABCdef/getUpdates?offset=100&timeout=30"</code></pre>
+        <section>
+          <h2>انتخاب روش مناسب</h2>
+          <p>اگر در حال توسعه یا تست هستید، از <a href="module-05-getUpdates.html">getUpdates</a> استفاده کنید. اگر بازوی شما در محیط تولید قرار دارد و به یک سرور با آدرس عمومی دسترسی دارید، وب‌هوک گزینه بهتری است.</p>
+        </section>
 
-                <h3>پاسخ نمونه</h3>
-                <pre><code>{
-  "ok": true,
-  "result": [
-    {
-      "update_id": 100,
-      "message": { ... }
-    },
-    {
-      "update_id": 101,
-      "message": { ... }
-    }
-  ]
-}</code></pre>
+        <section>
+          <h2>مرحله بعد</h2>
+          <p>برای اطلاعات بیشتر درباره ساختار آپدیت‌ها، بخش <a href="module-04-update.html">Update</a> را مطالعه کنید.</p>
+        </section>
+      </article>
 
-                <h2>نحوه پردازش آپدیت‌ها</h2>
-                <ol>
-                    <li>دریافت آپدیت‌ها با getUpdates</li>
-                    <li>پردازش هر آپدیت بر اساس نوع آن</li>
-                    <li>ذخیره update_id آخرین آپدیت پردازش شده</li>
-                    <li>ارسال offset = last_update_id + 1 در درخواست بعدی</li>
-                </ol>
+      <footer>
+        <p>
+          <a href="../../index.html">← بازگشت به صفحه اصلی</a> | 
+          <a href="module-02-making-requests.html">مرحله قبل: ایجاد درخواست</a> |
+          <a href="module-04-update.html">مرحله بعد: Update →</a>
+        </p>
+      </footer>
+    </main>
+  </div>
 
-                <div class="navigation-links">
-                    <p>ماژول قبلی: <a href="module-02-making-requests.html">ایجاد درخواست</a></p>
-                    <p>ماژول بعدی: <a href="module-04-update.html">Update</a></p>
-                </div>
-            </section>
-        </main>
-    </div>
-
-    <script src="../../js/navigation.js"></script>
+  <script src="../../js/navigation.js"></script>
 </body>
 </html>
