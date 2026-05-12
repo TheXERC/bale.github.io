@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ماژول ۲: ایجاد درخواست - مستندات بازوی بله</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <meta name="description" content="مستندات ایجاد درخواست به API بازوی بله - متدها و پارامترها">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <h2>فهرست مستندات</h2>
+            <nav>
+                <ul>
+                    <li><a href="../../index.html">صفحه اصلی</a></li>
+                    <li><a href="module-01-bot-creation.html">← قبلی: ساخت بازو</a></li>
+                    <li><a href="#making-requests">ایجاد درخواست</a></li>
+                    <li><a href="module-03-getting-updates.html">بعدی: دریافت آپدیت‌ها →</a></li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <section id="making-requests" class="module-container">
+                <h1>ایجاد درخواست</h1>
+                
+                <p>برای ارتباط با API بازوی بله، باید درخواست‌های HTTP را به سرور ارسال کنید. در این بخش روش‌های مختلف ایجاد درخواست را بررسی می‌کنیم.</p>
+
+                <h2>آدرس پایه API</h2>
+                <p>تمام درخواست‌ها باید به آدرس زیر ارسال شوند:</p>
+                <pre><code>https://tapi.bale.ai/bot&lt;TOKEN&gt;/&lt;METHOD&gt;</code></pre>
+
+                <h2>روش‌های ارسال درخواست</h2>
+
+                <h3>۱. استفاده از GET</h3>
+                <p>برای متدهایی که پارامترهای کمی دارند، می‌توانید از درخواست GET استفاده کنید:</p>
+                <pre><code>https://tapi.bale.ai/bot1234567890:ABCdef/sendMessage?chat_id=123456&text=سلام</code></pre>
+
+                <h3>۲. استفاده از POST (توصیه شده)</h3>
+                <p>برای اکثر درخواست‌ها، بهتر است از POST استفاده کنید:</p>
+                <pre><code>curl -X POST https://tapi.bale.ai/bot1234567890:ABCdef/sendMessage \
+  -d "chat_id=123456789" \
+  -d "text=سلام!"</code></pre>
+
+                <h2>فرمت داده‌ها</h2>
+                <p>داده‌ها باید به صورت <code>application/x-www-form-urlencoded</code> یا <code>multipart/form-data</code> (برای آپلود فایل) ارسال شوند.</p>
+
+                <h3>نمونه JSON Response</h3>
+                <pre><code>{
+  "ok": true,
+  "result": {
+    "message_id": 123,
+    "from": {
+      "id": 123456789,
+      "is_bot": true,
+      "first_name": "Bot Name",
+      "username": "mybot"
+    },
+    "chat": {
+      "id": 987654321,
+      "first_name": "User",
+      "type": "private"
+    },
+    "date": 1234567890,
+    "text": "سلام!"
+  }
+}</code></pre>
+
+                <h2>پارامترهای مشترک</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>پارامتر</th>
+                            <th>نوع</th>
+                            <th>توضیحات</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>chat_id</td>
+                            <td>String یا Integer</td>
+                            <td>شناسه گفتگو هدف یا @username کانال</td>
+                        </tr>
+                        <tr>
+                            <td>message_id</td>
+                            <td>Integer</td>
+                            <td>شناسه پیام (برای ویرایش یا حذف)</td>
+                        </tr>
+                        <tr>
+                            <td>text</td>
+                            <td>String</td>
+                            <td>متن پیام (۱ تا ۴۰۹۶ کاراکتر)</td>
+                        </tr>
+                        <tr>
+                            <td>reply_markup</td>
+                            <td>String (JSON)</td>
+                            <td>کیبورد سفارشی به صورت JSON serialized</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h2>مدیریت خطاها</h2>
+                <p>در صورت بروز خطا، API یک پاسخ JSON با فیلد <code>ok: false</code> برمی‌گرداند:</p>
+                <pre><code>{
+  "ok": false,
+  "error_code": 400,
+  "description": "Bad Request: chat not found"
+}</code></pre>
+
+                <h3>کدهای خطای رایج</h3>
+                <ul>
+                    <li><strong>400 Bad Request:</strong> پارامترهای نامعتبر</li>
+                    <li><strong>401 Unauthorized:</strong> توکن اشتباه</li>
+                    <li><strong>403 Forbidden:</strong> دسترسی غیرمجاز</li>
+                    <li><strong>429 Too Many Requests:</strong> محدودیت نرخ</li>
+                </ul>
+
+                <h2>محدودیت نرخ (Rate Limiting)</h2>
+                <p>API بله دارای محدودیت نرخ است. اگر بیش از حد مجاز درخواست ارسال کنید، خطای 429 دریافت خواهید کرد. در این صورت باید چند ثانیه صبر کنید و دوباره تلاش کنید.</p>
+
+                <div class="navigation-links">
+                    <p>ماژول قبلی: <a href="module-01-bot-creation.html">ساخت بازو</a></p>
+                    <p>ماژول بعدی: <a href="module-03-getting-updates.html">دریافت آپدیت‌ها</a></p>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../../js/navigation.js"></script>
+</body>
+</html>
