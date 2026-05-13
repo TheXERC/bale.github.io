@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>انواع کیبورد - مستندات بازوی بله</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <nav class="module-nav">
+        <a href="../index.html">فهرست اصلی</a>
+        <span>›</span>
+        <a href="#replykeyboardmarkup">ReplyKeyboardMarkup</a>
+        <span>›</span>
+        <a href="#keyboardbutton">KeyboardButton</a>
+        <span>›</span>
+        <a href="#inlinekeyboardmarkup">InlineKeyboardMarkup</a>
+        <span>›</span>
+        <a href="#inlinekeyboardbutton">InlineKeyboardButton</a>
+        <span>›</span>
+        <a href="#replykeyboardremove">ReplyKeyboardRemove</a>
+    </nav>
+
+    <main class="module-content">
+        <header>
+            <h1>انواع کیبورد</h1>
+            <p class="module-description">ساختارهای داده‌ای مربوط به کیبوردهای سفارشی در بله</p>
+        </header>
+
+        <section id="replykeyboardmarkup" class="api-section">
+            <h2>ReplyKeyboardMarkup</h2>
+            <p>این شیء نمایندهٔ یک کیبورد سفارشی با گزینه‌های پاسخ است که به جای کیبورد معمولی نمایش داده می‌شود.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>keyboard</td>
+                        <td>Array of Array of <a href="#keyboardbutton">KeyboardButton</a></td>
+                        <td>آرایه‌ای از ردیف‌های دکمه‌ها. هر ردیف یک آرایه از دکمه‌ها است.</td>
+                    </tr>
+                    <tr>
+                        <td>resize_keyboard</td>
+                        <td>Boolean</td>
+                        <td><em>اختیاری</em>. اگر true باشد، کیبورد هنگام نمایش تغییر اندازه می‌دهد.</td>
+                    </tr>
+                    <tr>
+                        <td>one_time_keyboard</td>
+                        <td>Boolean</td>
+                        <td><em>اختیاری</em>. اگر true باشد، کیبورد پس از اولین استفاده مخفی می‌شود.</td>
+                    </tr>
+                    <tr>
+                        <td>input_field_placeholder</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. متن placeholder برای فیلد ورودی</td>
+                    </tr>
+                    <tr>
+                        <td>selective</td>
+                        <td>Boolean</td>
+                        <td><em>اختیاری</em>. اگر true باشد، کیبورد فقط برای کاربران خاصی نمایش داده می‌شود.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="code-example">
+                <h3>مثال:</h3>
+                <pre><code>{
+  "keyboard": [
+    [{"text": "گزینه ۱"}, {"text": "گزینه ۲"}],
+    [{"text": "گزینه ۳"}]
+  ],
+  "resize_keyboard": true,
+  "one_time_keyboard": false
+}</code></pre>
+            </div>
+        </section>
+
+        <section id="keyboardbutton" class="api-section">
+            <h2>KeyboardButton</h2>
+            <p>این شیء نمایندهٔ یک دکمه در کیبورد سفارشی است.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>text</td>
+                        <td>String</td>
+                        <td>متن دکمه. اگر خالی باشد، دکمه نادیده گرفته می‌شود.</td>
+                    </tr>
+                    <tr>
+                        <td>request_contact</td>
+                        <td>Boolean</td>
+                        <td><em>اختیاری</em>. اگر true باشد، با فشار دادن دکمه، اطلاعات تماس کاربر ارسال می‌شود.</td>
+                    </tr>
+                    <tr>
+                        <td>request_location</td>
+                        <td>Boolean</td>
+                        <td><em>اختیاری</em>. اگر true باشد، با فشار دادن دکمه، موقعیت مکانی کاربر ارسال می‌شود.</td>
+                    </tr>
+                    <tr>
+                        <td>request_poll</td>
+                        <td>PollType</td>
+                        <td><em>اختیاری</em>. اگر تنظیم شود، کاربر می‌تواند نظرسنجی ایجاد کند.</td>
+                    </tr>
+                    <tr>
+                        <td>web_app</td>
+                        <td><a href="#webappinfo">WebAppInfo</a></td>
+                        <td><em>اختیاری</em>. اگر تنظیم شود، با فشار دادن دکمه، Mini App باز می‌شود.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="inlinekeyboardmarkup" class="api-section">
+            <h2>InlineKeyboardMarkup</h2>
+            <p>این شیء نمایندهٔ یک کیبورد اینلاین است که زیر پیام‌ها نمایش داده می‌شود.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>inline_keyboard</td>
+                        <td>Array of Array of <a href="#inlinekeyboardbutton">InlineKeyboardButton</a></td>
+                        <td>آرایه‌ای از ردیف‌های دکمه‌های اینلاین. هر ردیف یک آرایه از دکمه‌ها است.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="code-example">
+                <h3>مثال:</h3>
+                <pre><code>{
+  "inline_keyboard": [
+    [
+      {"text": "لینک", "url": "https://example.com"},
+      {"text": "دکمه callback", "callback_data": "data123"}
+    ],
+    [
+      {"text": "انتخاب دیگر", "callback_data": "data456"}
+    ]
+  ]
+}</code></pre>
+            </div>
+        </section>
+
+        <section id="inlinekeyboardbutton" class="api-section">
+            <h2>InlineKeyboardButton</h2>
+            <p>این شیء نمایندهٔ یک دکمه در کیبورد اینلاین است.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>text</td>
+                        <td>String</td>
+                        <td>متن دکمه</td>
+                    </tr>
+                    <tr>
+                        <td>url</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. لینک HTTP یا HTTPS که با فشار دادن دکمه باز می‌شود.</td>
+                    </tr>
+                    <tr>
+                        <td>callback_data</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. داده‌ای که با فشار دادن دکمه به بازو ارسال می‌شود (حداکثر ۶۴ بایت).</td>
+                    </tr>
+                    <tr>
+                        <td>switch_inline_query</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. اگر تنظیم شود، با فشار دادن دکمه، کاربر به حالت Inline Query هدایت می‌شود.</td>
+                    </tr>
+                    <tr>
+                        <td>switch_inline_query_current_chat</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. مشابه switch_inline_query اما برای گفتگوی فعلی.</td>
+                    </tr>
+                    <tr>
+                        <td>copy_text</td>
+                        <td><a href="#copytextbutton">CopyTextButton</a></td>
+                        <td><em>اختیاری</em>. اگر تنظیم شود، با فشار دادن دکمه، متن کپی می‌شود.</td>
+                    </tr>
+                    <tr>
+                        <td>web_app</td>
+                        <td><a href="#webappinfo">WebAppInfo</a></td>
+                        <td><em>اختیاری</em>. اگر تنظیم شود، با فشار دادن دکمه، Mini App باز می‌شود.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-box">
+                <p><strong>نکته:</strong> حداقل یکی از فیلدهای url، callback_data، switch_inline_query، switch_inline_query_current_chat، copy_text یا web_app باید تنظیم شود.</p>
+            </div>
+        </section>
+
+        <section id="replykeyboardremove" class="api-section">
+            <h2>ReplyKeyboardRemove</h2>
+            <p>با ارسال این شیء، کیبورد سفارشی قبلی حذف و کیبورد معمولی نمایش داده می‌شود.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>remove_keyboard</td>
+                        <td>Boolean</td>
+                        <td>همیشه باید true باشد. درخواست حذف کیبورد سفارشی را نشان می‌دهد.</td>
+                    </tr>
+                    <tr>
+                        <td>selective</td>
+                        <td>Boolean</td>
+                        <td><em>اختیاری</em>. اگر true باشد، حذف کیبورد فقط برای کاربران خاصی انجام می‌شود.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="code-example">
+                <h3>مثال:</h3>
+                <pre><code>{
+  "remove_keyboard": true,
+  "selective": false
+}</code></pre>
+            </div>
+        </section>
+
+        <nav class="module-navigation">
+            <a href="module-11-media-types.html" class="prev">قبلی: Media Types</a>
+            <a href="module-13-callback-webapp.html" class="next">بعدی: CallbackQuery و WebApp</a>
+        </nav>
+    </main>
+
+    <script src="../js/navigation.js"></script>
+</body>
+</html>

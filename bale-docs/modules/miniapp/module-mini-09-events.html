@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - رویدادهای مینی‌اپ</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <article class="module-content">
+        <header>
+            <nav class="breadcrumb">
+                <a href="../../index.html">خانه</a> / 
+                <a href="../miniapp-index.html">مستندات مینی‌اپ</a> / 
+                <span>Events</span>
+            </nav>
+            <h1>Events</h1>
+        </header>
+
+        <section id="events-intro">
+            <p>مینی‌اپ می‌تواند رویدادهایی را از کلاینت بله دریافت کند و با استفاده از متد Bale.WebApp.onEvent(eventType, eventHandler)، یک یا چند تابع را برای دریافت آن‌ها ثبت کند. داخل eventHandler، کلمه کلیدی this به Bale.WebApp اشاره می‌کند و مجموعه پارامترهای ارسال‌شده به آن بستگی به نوع رویداد دارد.</p>
+        </section>
+
+        <section id="events-list">
+            <h2>فهرست رویدادها</h2>
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>اسم</th>
+                        <th>نسخه</th>
+                        <th>توضیح</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>backButtonPressed</td>
+                        <td>1.0</td>
+                        <td>زمانی رخ می‌دهد که دکمه بازگشت فشرده شود. eventHandler هیچ پارامتری دریافت نمی‌کند.</td>
+                    </tr>
+                    <tr>
+                        <td>settingsButtonPressed</td>
+                        <td>1.0</td>
+                        <td>زمانی رخ می‌دهد که دکمه تنظیمات در منو فشرده شود. eventHandler هیچ پارامتری دریافت نمی‌کند.</td>
+                    </tr>
+                    <tr>
+                        <td>contactRequested</td>
+                        <td>1.0</td>
+                        <td>زمانی رخ می‌دهد که شماره تلفن کاربر درخواست شود. eventHandler یک آبجکت دریافت می‌کند که شامل فیلد status با یکی از مقادیر زیر است:<ul><li>sent – کاربر شماره تلفن خود را با بات به اشتراک گذاشت.</li><li>cancelled – کاربر این درخواست را رد کرد.</li></ul></td>
+                    </tr>
+                    <tr>
+                        <td>homeScreenChecked</td>
+                        <td>1.1</td>
+                        <td>بعد از بررسی وضعیت بودن یا نبودن در home screen رخ می دهد.تابعی که به عنوان event handler پاس داده می‌شود، یک آبجکت با فیلد status دریافت می‌کند که مقادیر زیر را می‌تواند داشته باشد:<ul><li>unsupported: این ویژگی پشتیبانی نمی شود، و امکان اضافه کردن مینی‌اپ به home screen وجود ندارد.</li><li>unknown: این ویژگی پشتیبانی می شود، و مینی‌اپ را می توان اضافه کرد، اما تعیین اینکه آیا مینی‌اپ قبلاً اضافه شده است، امکان پذیر نیست.</li><li>added: مینی‌اپ قبلاً به صفحه اصلی اضافه شده است.</li><li>missed: مینی‌اپ به صفحه اصلی اضافه نشده است.</li></ul></td>
+                    </tr>
+                    <tr>
+                        <td>homeScreenAdded</td>
+                        <td>1.2</td>
+                        <td>زمانی رخ می دهد که مینی‌اپ با موفقیت به home screen اضافه شود. تابع eventHandler ای که پاس داده می‌شود، هیچی پارامتری دریافت نمی‌کند.</td>
+                    </tr>
+                    <tr>
+                        <td>homeScreenFailed</td>
+                        <td>1.2</td>
+                        <td>زمانی رخ می دهد که مینی‌اپ به home screen نتوانست اضافه شود. تابع eventHandler ای که پاس داده می‌شود، هیچی پارامتری دریافت نمی‌کند.</td>
+                    </tr>
+                    <tr>
+                        <td>qrTextReceived</td>
+                        <td>1.2</td>
+                        <td>زمان رخ می‌دهد که اسکنر QR را می‌خواند. تابع eventHandler یک آبجکت با فیلد text دریافت می‌کند. متن اسکن شده درون این فیلد قرار دارد.</td>
+                    </tr>
+                    <tr>
+                        <td>scanQrPopupClosed</td>
+                        <td>1.2</td>
+                        <td>زمان رخ می‌دهد که اسکنر QR بدون اسکن کردن بسته شود. eventHandler هیچ پارامتری دریافت نمی‌کند.</td>
+                    </tr>
+                    <tr>
+                        <td>invoiceClosed</td>
+                        <td>1.3</td>
+                        <td>زمانی رخ می‌دهد که صفحه پرداخت بسته شود. تابع eventHandler به عنوان ورودی یک آبجکت دریافت می‌کند که ۲ فیلد دارد:<ul><li>invoiceId</li><li>status</li></ul>مقادیری که status می‌تواند داشته باشد:<ul><li>paid: پرداخت با موفقیت انجام شده است</li><li>cancelled – کاربر صفحه پرداخت را بسته است</li><li>failed – کاربر تلاش کرده است که پرداخت را انجام دهد ولی موفق نشده است</li><li>pending – پرداخت در حال پردازش است</li></ul></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <footer class="module-footer">
+            <div class="navigation-links">
+                <a href="module-mini-08-validation.html" class="prev">← اعتبارسنجی داده‌ها</a>
+                <a href="module-mini-10-debugging.html" class="next">رفع اشکال →</a>
+            </div>
+        </footer>
+    </article>
+    <script src="../../js/navigation.js"></script>
+</body>
+</html>

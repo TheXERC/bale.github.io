@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="متد getWebhookInfo در API بازوی بله - دریافت وضعیت فعلی وب‌هوک">
+  <title>getWebhookInfo | مستندات بازوی بله</title>
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <div class="main-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <nav>
+        <h3>شروع سریع</h3>
+        <ul>
+          <li><a href="../../index.html">خانه</a></li>
+          <li><a href="module-01-bot-creation.html">ساخت بازو</a></li>
+          <li><a href="module-02-making-requests.html">ایجاد درخواست</a></li>
+          <li><a href="module-03-getting-updates.html">دریافت آپدیت‌ها</a></li>
+        </ul>
+
+        <h3>متدهای دریافت آپدیت</h3>
+        <ul>
+          <li><a href="module-04-update.html">Update</a></li>
+          <li><a href="module-05-getUpdates.html">getUpdates</a></li>
+          <li><a href="module-06-setWebhook.html">setWebhook</a></li>
+          <li><a href="module-07-deleteWebhook.html">deleteWebhook</a></li>
+          <li><a href="module-08-getWebhookInfo.html" class="active">getWebhookInfo</a></li>
+        </ul>
+
+        <h3>انواع داده‌ها</h3>
+        <ul>
+          <li><a href="module-09-user.html">User</a></li>
+          <li><a href="module-10-chat.html">Chat</a></li>
+          <li><a href="module-11-message.html">Message</a></li>
+          <li><a href="module-12-keyboard-types.html">انواع کیبورد</a></li>
+        </ul>
+
+        <h3>ارسال فایل‌ها</h3>
+        <ul>
+          <li><a href="module-13-sending-files.html">راهنمای ارسال فایل</a></li>
+        </ul>
+
+        <h3>مینی‌اپ‌ها</h3>
+        <ul>
+          <li><a href="../miniapp/index.html">معرفی مینی‌اپ</a></li>
+          <li><a href="../miniapp/module-01-intro.html">شروع به کار</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+      <header>
+        <h1>getWebhookInfo</h1>
+      </header>
+
+      <article class="module-content">
+        <section>
+          <p>از این متد برای دریافت وضعیت فعلی وب‌هوک استفاده کنید. این متد به هیچ پارامتری نیاز ندارد.</p>
+          
+          <p>در صورت اجرای موفقیت آمیز، یک شی <a href="#webhookinfo">WebhookInfo</a> برگردانده می‌شود. اگر بازو در حال استفاده از متد <a href="module-05-getUpdates.html">getUpdates</a> است، خروجی یک شی خواهد بود که فیلد url آن خالی است.</p>
+          
+          <pre><code>GET https://tapi.bale.ai/bot&lt;token&gt;/getWebhookInfo</code></pre>
+        </section>
+
+        <section>
+          <h2>پارامترها</h2>
+          <p>این متد هیچ پارامتری نمی‌پذیرد.</p>
+        </section>
+
+        <section>
+          <h2>مثال درخواست</h2>
+          <pre><code>GET https://tapi.bale.ai/bot123456789:abcdIuZmK5qNEm2A1BhUaAg7MPJv1O9KCcBQB2ro/getWebhookInfo</code></pre>
+        </section>
+
+        <section>
+          <h2>مثال پاسخ با وب‌هوک فعال</h2>
+          <pre><code>{
+  "ok": true,
+  "result": {
+    "url": "https://example.com/webhook",
+    "has_custom_certificate": false,
+    "pending_update_count": 5,
+    "ip_address": "203.0.113.1",
+    "last_error_date": 1699999999,
+    "last_error_message": "",
+    "max_connections": 40,
+    "last_synchronization_error_date": null
+  }
+}</code></pre>
+        </section>
+
+        <section>
+          <h2>مثال پاسخ بدون وب‌هوک</h2>
+          <pre><code>{
+  "ok": true,
+  "result": {
+    "url": "",
+    "has_custom_certificate": false,
+    "pending_update_count": 0
+  }
+}</code></pre>
+        </section>
+
+        <section id="webhookinfo">
+          <h2>WebhookInfo</h2>
+          <p>این شیء شامل اطلاعات درباره وضعیت وب‌هوک فعلی است.</p>
+          
+          <table>
+            <thead>
+              <tr>
+                <th>فیلد</th>
+                <th>نوع</th>
+                <th>شرح</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>url</code></td>
+                <td>String</td>
+                <td>URL وب‌هوک تنظیم شده. اگر وب‌هوکی تنظیم نشده باشد، رشته خالی است.</td>
+              </tr>
+              <tr>
+                <td><code>has_custom_certificate</code></td>
+                <td>Boolean</td>
+                <td>آیا گواهی SSL سفارشی استفاده شده است؟</td>
+              </tr>
+              <tr>
+                <td><code>pending_update_count</code></td>
+                <td>Integer</td>
+                <td>تعداد آپدیت‌های در صف انتظار برای تحویل</td>
+              </tr>
+              <tr>
+                <td><code>ip_address</code></td>
+                <td>String</td>
+                <td>آدرس IP آخرین درخواست‌دهنده به وب‌هوک</td>
+              </tr>
+              <tr>
+                <td><code>last_error_date</code></td>
+                <td>Integer</td>
+                <td>زمان آخرین خطا (timestamp)</td>
+              </tr>
+              <tr>
+                <td><code>last_error_message</code></td>
+                <td>String</td>
+                <td>پیام آخرین خطا</td>
+              </tr>
+              <tr>
+                <td><code>max_connections</code></td>
+                <td>Integer</td>
+                <td>حداکثر تعداد اتصال‌های همزمان</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section>
+          <h2>کاربردها</h2>
+          <ul>
+            <li>بررسی اینکه آیا وب‌هوک به درستی تنظیم شده است</li>
+            <li>مشاهده تعداد آپدیت‌های در صف انتظار</li>
+            <li>عیب‌یابی خطاهای وب‌هوک</li>
+            <li>بررسی آدرس IP درخواست‌دهنده</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>مرحله بعد</h2>
+          <p>پس از آشنایی با روش‌های دریافت آپدیت، می‌توانید با <a href="module-09-user.html">انواع داده‌ها</a> مانند User و Chat آشنا شوید.</p>
+        </section>
+      </article>
+
+      <footer>
+        <p>
+          <a href="../../index.html">← بازگشت به صفحه اصلی</a> | 
+          <a href="module-07-deleteWebhook.html">مرحله قبل: deleteWebhook</a> |
+          <a href="module-09-user.html">مرحله بعد: انواع داده‌ها →</a>
+        </p>
+      </footer>
+    </main>
+  </div>
+
+  <script src="../../js/navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>انواع رسانه‌ای - مستندات بازوی بله</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <nav class="module-nav">
+        <a href="../index.html">فهرست اصلی</a>
+        <span>›</span>
+        <a href="#photosize">PhotoSize</a>
+        <span>›</span>
+        <a href="#animation">Animation</a>
+        <span>›</span>
+        <a href="#audio">Audio</a>
+        <span>›</span>
+        <a href="#document">Document</a>
+        <span>›</span>
+        <a href="#video">Video</a>
+        <span>›</span>
+        <a href="#voice">Voice</a>
+        <span>›</span>
+        <a href="#contact">Contact</a>
+        <span>›</span>
+        <a href="#location">Location</a>
+        <span>›</span>
+        <a href="#invoice">Invoice</a>
+        <span>›</span>
+        <a href="#file">File</a>
+    </nav>
+
+    <main class="module-content">
+        <header>
+            <h1>انواع رسانه‌ای و فایل</h1>
+            <p class="module-description">ساختارهای داده‌ای مربوط به فایل‌های رسانه‌ای در بله</p>
+        </header>
+
+        <section id="photosize" class="api-section">
+            <h2>PhotoSize</h2>
+            <p>این شیء نمایندهٔ یک اندازه از عکس است.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>file_id</td>
+                        <td>String</td>
+                        <td>شناسه این فایل که می‌توان آن را جهت دانلود یا استفاده مجدد به کار برد.</td>
+                    </tr>
+                    <tr>
+                        <td>file_unique_id</td>
+                        <td>String</td>
+                        <td>شناسه منحصربه‌فرد این فایل که در طول زمان و برای بازوهای مختلف یکسان است.</td>
+                    </tr>
+                    <tr>
+                        <td>width</td>
+                        <td>Integer</td>
+                        <td>عرض عکس</td>
+                    </tr>
+                    <tr>
+                        <td>height</td>
+                        <td>Integer</td>
+                        <td>ارتفاع عکس</td>
+                    </tr>
+                    <tr>
+                        <td>file_size</td>
+                        <td>Integer</td>
+                        <td><em>اختیاری</em>. حجم فایل با واحد بایت</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="animation" class="api-section">
+            <h2>Animation</h2>
+            <p>این شیء نمایندهٔ یک فایل انیمیشن (GIF یا H.264/MPEG-4 AVC) است.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>file_id</td>
+                        <td>String</td>
+                        <td>شناسه این فایل</td>
+                    </tr>
+                    <tr>
+                        <td>file_unique_id</td>
+                        <td>String</td>
+                        <td>شناسه منحصربه‌فرد این فایل</td>
+                    </tr>
+                    <tr>
+                        <td>width</td>
+                        <td>Integer</td>
+                        <td>عرض ویدیو</td>
+                    </tr>
+                    <tr>
+                        <td>height</td>
+                        <td>Integer</td>
+                        <td>ارتفاع ویدیو</td>
+                    </tr>
+                    <tr>
+                        <td>duration</td>
+                        <td>Integer</td>
+                        <td>مدت زمان انیمیشن به ثانیه</td>
+                    </tr>
+                    <tr>
+                        <td>thumbnail</td>
+                        <td><a href="#photosize">PhotoSize</a></td>
+                        <td><em>اختیاری</em>. تصویر بندانگشتی</td>
+                    </tr>
+                    <tr>
+                        <td>file_name</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. نام اصلی فایل</td>
+                    </tr>
+                    <tr>
+                        <td>mime_type</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. نوع MIME فایل</td>
+                    </tr>
+                    <tr>
+                        <td>file_size</td>
+                        <td>Integer</td>
+                        <td><em>اختیاری</em>. حجم فایل با واحد بایت</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="audio" class="api-section">
+            <h2>Audio</h2>
+            <p>این شیء نمایندهٔ یک فایل صوتی است.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>file_id</td>
+                        <td>String</td>
+                        <td>شناسه این فایل</td>
+                    </tr>
+                    <tr>
+                        <td>file_unique_id</td>
+                        <td>String</td>
+                        <td>شناسه منحصربه‌فرد این فایل</td>
+                    </tr>
+                    <tr>
+                        <td>duration</td>
+                        <td>Integer</td>
+                        <td>مدت زمان فایل صوتی به ثانیه</td>
+                    </tr>
+                    <tr>
+                        <td>performer</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. نام اجراکننده</td>
+                    </tr>
+                    <tr>
+                        <td>title</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. عنوان فایل صوتی</td>
+                    </tr>
+                    <tr>
+                        <td>file_name</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. نام اصلی فایل</td>
+                    </tr>
+                    <tr>
+                        <td>mime_type</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. نوع MIME فایل</td>
+                    </tr>
+                    <tr>
+                        <td>file_size</td>
+                        <td>Integer</td>
+                        <td><em>اختیاری</em>. حجم فایل با واحد بایت</td>
+                    </tr>
+                    <tr>
+                        <td>thumbnail</td>
+                        <td><a href="#photosize">PhotoSize</a></td>
+                        <td><em>اختیاری</em>. تصویر بندانگشتی</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="document" class="api-section">
+            <h2>Document</h2>
+            <p>این شیء نمایندهٔ یک فایل عمومی است.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>file_id</td>
+                        <td>String</td>
+                        <td>شناسه این فایل</td>
+                    </tr>
+                    <tr>
+                        <td>file_unique_id</td>
+                        <td>String</td>
+                        <td>شناسه منحصربه‌فرد این فایل</td>
+                    </tr>
+                    <tr>
+                        <td>thumbnail</td>
+                        <td><a href="#photosize">PhotoSize</a></td>
+                        <td><em>اختیاری</em>. تصویر بندانگشتی</td>
+                    </tr>
+                    <tr>
+                        <td>file_name</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. نام اصلی فایل</td>
+                    </tr>
+                    <tr>
+                        <td>mime_type</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. نوع MIME فایل</td>
+                    </tr>
+                    <tr>
+                        <td>file_size</td>
+                        <td>Integer</td>
+                        <td><em>اختیاری</em>. حجم فایل با واحد بایت</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="video" class="api-section">
+            <h2>Video</h2>
+            <p>این شیء نمایندهٔ یک فایل ویدیویی است.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>file_id</td>
+                        <td>String</td>
+                        <td>شناسه این فایل</td>
+                    </tr>
+                    <tr>
+                        <td>file_unique_id</td>
+                        <td>String</td>
+                        <td>شناسه منحصربه‌فرد این فایل</td>
+                    </tr>
+                    <tr>
+                        <td>width</td>
+                        <td>Integer</td>
+                        <td>عرض ویدیو</td>
+                    </tr>
+                    <tr>
+                        <td>height</td>
+                        <td>Integer</td>
+                        <td>ارتفاع ویدیو</td>
+                    </tr>
+                    <tr>
+                        <td>duration</td>
+                        <td>Integer</td>
+                        <td>مدت زمان ویدیو به ثانیه</td>
+                    </tr>
+                    <tr>
+                        <td>thumbnail</td>
+                        <td><a href="#photosize">PhotoSize</a></td>
+                        <td><em>اختیاری</em>. تصویر بندانگشتی</td>
+                    </tr>
+                    <tr>
+                        <td>file_name</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. نام اصلی فایل</td>
+                    </tr>
+                    <tr>
+                        <td>mime_type</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. نوع MIME فایل</td>
+                    </tr>
+                    <tr>
+                        <td>file_size</td>
+                        <td>Integer</td>
+                        <td><em>اختیاری</em>. حجم فایل با واحد بایت</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="voice" class="api-section">
+            <h2>Voice</h2>
+            <p>این شیء نمایندهٔ یک پیام صوتی (Voice Message) است.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>file_id</td>
+                        <td>String</td>
+                        <td>شناسه این فایل</td>
+                    </tr>
+                    <tr>
+                        <td>file_unique_id</td>
+                        <td>String</td>
+                        <td>شناسه منحصربه‌فرد این فایل</td>
+                    </tr>
+                    <tr>
+                        <td>duration</td>
+                        <td>Integer</td>
+                        <td>مدت زمان پیام صوتی به ثانیه</td>
+                    </tr>
+                    <tr>
+                        <td>mime_type</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. نوع MIME فایل</td>
+                    </tr>
+                    <tr>
+                        <td>file_size</td>
+                        <td>Integer</td>
+                        <td><em>اختیاری</em>. حجم فایل با واحد بایت</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="contact" class="api-section">
+            <h2>Contact</h2>
+            <p>این شیء نمایندهٔ اطلاعات تماس یک کاربر است.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>phone_number</td>
+                        <td>String</td>
+                        <td>شماره تلفن کاربر</td>
+                    </tr>
+                    <tr>
+                        <td>first_name</td>
+                        <td>String</td>
+                        <td>نام کوچک کاربر</td>
+                    </tr>
+                    <tr>
+                        <td>last_name</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. نام خانوادگی کاربر</td>
+                    </tr>
+                    <tr>
+                        <td>user_id</td>
+                        <td>Integer</td>
+                        <td><em>اختیاری</em>. شناسه کاربر در بله</td>
+                    </tr>
+                    <tr>
+                        <td>vcard</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. کارت ویزیت الکترونیکی</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="location" class="api-section">
+            <h2>Location</h2>
+            <p>این شیء نمایندهٔ یک موقعیت مکانی است.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>longitude</td>
+                        <td>Float</td>
+                        <td>طول جغرافیایی</td>
+                    </tr>
+                    <tr>
+                        <td>latitude</td>
+                        <td>Float</td>
+                        <td>عرض جغرافیایی</td>
+                    </tr>
+                    <tr>
+                        <td>horizontal_accuracy</td>
+                        <td>Float</td>
+                        <td><em>اختیاری</em>. دقت افقی موقعیت به متر</td>
+                    </tr>
+                    <tr>
+                        <td>live_period</td>
+                        <td>Integer</td>
+                        <td><em>اختیاری</em>. مدت زمان زنده بودن موقعیت به ثانیه</td>
+                    </tr>
+                    <tr>
+                        <td>heading</td>
+                        <td>Integer</td>
+                        <td><em>اختیاری</em>. جهت حرکت به درجه</td>
+                    </tr>
+                    <tr>
+                        <td>proximity_alert_radius</td>
+                        <td>Integer</td>
+                        <td><em>اختیاری</em>. شعاع هشدار نزدیکی به متر</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="invoice" class="api-section">
+            <h2>Invoice</h2>
+            <p>این شیء نمایندهٔ یک فاکتور برای پرداخت است.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>title</td>
+                        <td>String</td>
+                        <td>عنوان فاکتور</td>
+                    </tr>
+                    <tr>
+                        <td>description</td>
+                        <td>String</td>
+                        <td>توضیحات فاکتور</td>
+                    </tr>
+                    <tr>
+                        <td>start_parameter</td>
+                        <td>String</td>
+                        <td>پارامتر شروع منحصر به فرد</td>
+                    </tr>
+                    <tr>
+                        <td>currency</td>
+                        <td>String</td>
+                        <td>کد ارز سه حرفی ISO 4217</td>
+                    </tr>
+                    <tr>
+                        <td>total_amount</td>
+                        <td>Integer</td>
+                        <td>مبلغ کل به کوچکترین واحد ارز</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="file" class="api-section">
+            <h2>File</h2>
+            <p>این شیء نمایندهٔ یک فایل آماده برای دانلود است.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>file_id</td>
+                        <td>String</td>
+                        <td>شناسه این فایل که می‌توان آن را جهت دانلود یا استفاده مجدد به کار برد.</td>
+                    </tr>
+                    <tr>
+                        <td>file_unique_id</td>
+                        <td>String</td>
+                        <td>شناسه منحصربه‌فرد این فایل</td>
+                    </tr>
+                    <tr>
+                        <td>file_size</td>
+                        <td>Integer</td>
+                        <td><em>اختیاری</em>. حجم فایل با واحد بایت</td>
+                    </tr>
+                    <tr>
+                        <td>file_path</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. مسیر فایل برای دانلود</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="info-box">
+                <p><strong>نکته:</strong> برای دانلود فایل، از آدرس زیر استفاده کنید:</p>
+                <code>https://cdn.bale.ai/file/bot&lt;TOKEN&gt;/&lt;file_path&gt;</code>
+            </div>
+        </section>
+
+        <nav class="module-navigation">
+            <a href="module-10-message-types.html" class="prev">قبلی: Message Types</a>
+            <a href="module-12-keyboard-types.html" class="next">بعدی: Keyboard Types</a>
+        </nav>
+    </main>
+
+    <script src="../js/navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BackButton و SettingsButton - دکمه‌های رابط کاربری</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <article class="module-content">
+        <header>
+            <nav class="breadcrumb">
+                <a href="../../index.html">خانه</a> / 
+                <a href="../miniapp-index.html">مستندات مینی‌اپ</a> / 
+                <span>BackButton و SettingsButton</span>
+            </nav>
+            <h1>BackButton و SettingsButton</h1>
+        </header>
+
+        <section id="back-button">
+            <h2>BackButton</h2>
+            <p>این شیء، کنترل دکمه بازگشت در header رابط کاربری بله را بر عهده دارد و با استفاده از آن می‌توانید دکمه بستن را با دکمه بازگشت جایگزین کنید.</p>
+            
+            <h3>ویژگی‌ها</h3>
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>isVisible</td>
+                        <td>Boolean</td>
+                        <td>نشان می‌دهد که آیا دکمه قابل مشاهده است یا نه. به‌طور پیش‌فرض برابر با false است.</td>
+                    </tr>
+                    <tr>
+                        <td>onClick(callback)</td>
+                        <td>Function</td>
+                        <td>این متد یک eventHandler برای کلیک روی دکمه ثبت می‌کند. معادل Bale.WebApp.onEvent('backButtonPressed', callback)</td>
+                    </tr>
+                    <tr>
+                        <td>offClick(callback)</td>
+                        <td>Function</td>
+                        <td>این متد eventHandler کلیک روی دکمه را غیر فعال می‌کند. معادل Bale.WebApp.offEvent('backButtonPressed', callback)</td>
+                    </tr>
+                    <tr>
+                        <td>show()</td>
+                        <td>Function</td>
+                        <td>متدی برای فعال و قابل مشاهده‌کردن دکمه.</td>
+                    </tr>
+                    <tr>
+                        <td>hide()</td>
+                        <td>Function</td>
+                        <td>متدی برای پنهان‌کردن دکمه.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="warning-box">
+                <h3>⚠️ هشدار مهم</h3>
+                <p>برای اطمینان از کارکرد صحیح این دکمه در کلاینت وب بله، از روتینگ درون‌برنامه‌ای (In-Memory Routing) استفاده کنید که تاریخچه مرورگر را تغییر نمی‌دهند.</p>
+                
+                <h4>مثال React:</h4>
+                <pre><code>import { MemoryRouter } from "react-router-dom";
+
+&lt;MemoryRouter&gt;{/* Routes */}&lt;/MemoryRouter&gt;;</code></pre>
+                
+                <h4>مثال Vue:</h4>
+                <pre><code>import { createMemoryHistory, createRouter } from 'vue-router';
+
+const router = createRouter({
+  history: createMemoryHistory(),
+  routes: [...]
+});</code></pre>
+            </div>
+        </section>
+
+        <section id="settings-button">
+            <h2>SettingsButton</h2>
+            <p>این شیء وظیفه افزودن و کنترل گزینه تنظیمات را در منوی زمینه header در رابط کاربری بله را بر عهده دارد.</p>
+            
+            <h3>ویژگی‌ها</h3>
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>isVisible</td>
+                        <td>Boolean</td>
+                        <td>نشان می‌دهد که آیا گزینه در منو قابل مشاهده است یا نه. به‌طور پیش‌فرض برابر با false است.</td>
+                    </tr>
+                    <tr>
+                        <td>onClick(callback)</td>
+                        <td>Function</td>
+                        <td>این متد یک eventHandler برای کلیک روی گزینه ثبت می‌کند. معادل Bale.WebApp.onEvent('settingsButtonClicked', callback)</td>
+                    </tr>
+                    <tr>
+                        <td>offClick(callback)</td>
+                        <td>Function</td>
+                        <td>این متد eventHandler کلیک روی گزینه را غیر فعال می‌کند. معادل Bale.WebApp.offEvent('settingsButtonClicked', callback)</td>
+                    </tr>
+                    <tr>
+                        <td>show()</td>
+                        <td>Function</td>
+                        <td>متدی برای فعال و قابل مشاهده‌کردن گزینه تنظیمات در منوی زمینه.</td>
+                    </tr>
+                    <tr>
+                        <td>hide()</td>
+                        <td>Function</td>
+                        <td>متدی برای پنهان‌کردن گزینه تنظیمات در منوی زمینه.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <footer class="module-footer">
+            <div class="navigation-links">
+                <a href="module-mini-06-theme-params.html" class="prev">← ThemeParams</a>
+                <a href="module-mini-08-validation.html" class="next">اعتبارسنجی داده‌ها →</a>
+            </div>
+        </footer>
+    </article>
+    <script src="../../js/navigation.js"></script>
+</body>
+</html>

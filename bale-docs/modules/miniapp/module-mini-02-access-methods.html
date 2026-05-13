@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دسترسی به مینی‌اپ‌ها - روش‌های مختلف</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <article class="module-content">
+        <header>
+            <nav class="breadcrumb">
+                <a href="../../index.html">خانه</a> / 
+                <a href="../miniapp-index.html">مستندات مینی‌اپ</a> / 
+                <span>دسترسی به مینی‌اپ‌ها</span>
+            </nav>
+            <h1>دسترسی به مینی‌اپ‌ها</h1>
+        </header>
+
+        <section id="access-methods">
+            <p>در حال حاضر از چهار روش برای اجرای مینی‌اپ‌ها در بله پشتیبانی می‌کنیم؛ مینی‌اپ اصلی، دکمه منوی بازو، <a href="../main/module-12-keyboard-types.html">دکمه اینلاین</a> و <a href="../main/module-12-keyboard-types.html">دکمه صفحه‌کلید ریپلای</a>.</p>
+        </section>
+
+        <section id="main-miniapp">
+            <h2>مینی‌اپ اصلی</h2>
+            <p>مینی‌اپ اصلی به شما اجازه می‌دهد که یک آدرس مشخص را به عنوان نقطه ورود اصلی برای کاربران خود تعیین کنید. هر بازو یک مینی‌اپ اصلی دارد که می‌توانید با مراجعه به <a href="https://ble.ir/botfather">@botfather</a> آن را فعال کنید.</p>
+            
+            <p>برای ورود به مینی‌اپ اصلی، کاربران نیازی به شروع گفتگو با بازوی شما ندارند و می‌توانند از طریق <strong>پیوند مستقیم</strong>، <strong>صفحه جستجو</strong> و <strong>صفحه پروفایل بازو</strong> به آن وارد شوند. علاوه بر این موارد، از <strong>صفحه گفتگوها</strong> نیز دکمه مینی‌اپ اصلی در دسترس است. این ویژگی‌ها به کاربران اجازه می‌دهند دسترسی به مراتب ساده و سریع‌تری به مینی‌اپ بازوی شما داشته باشند.</p>
+        </section>
+
+        <section id="direct-link">
+            <h3>پیوند مستقیم</h3>
+            <p>کاربران می‌توانند از هر جایی با کلیک روی پیوندی در قالب زیر، مستقیم وارد مینی‌اپ اصلی شود:</p>
+            <pre><code>https://ble.ir/&lt;bot_username&gt;?startapp
+https://ble.ir/&lt;bot_username&gt;?startapp=&lt;start_param&gt;</code></pre>
+            <p>اگر پارامتر startapp در پیوند به‌صورت غیرخالی مقداردهی شده باشد، این مقدار به مینی‌اپ منتقل شده و در قالب query با نام tgWebAppStartParam در دسترس خواهد بود.</p>
+        </section>
+
+        <section id="menu-button">
+            <h3>مینی‌اپ در دکمه منو بازو</h3>
+            <p>در گفتگوی شخصی با بازوها، همیشه دکمه‌ای کاربردی کنار نوار ورودی قرار دارد که دسترسی سریع به دستورهای بازو را فراهم می‌کند. با مراجعه به @botfather می‌توانید عملکرد این دکمه را تغییر دهید تا پیوند ثابتی را در قالب مینی‌اپ باز کند و متن دلخواه شما را نمایش دهد.</p>
+        </section>
+
+        <section id="inline-messages">
+            <h3>مینی‌اپ در پیام‌ها</h3>
+            <p>با استفاده از فیلد web_app در InlineKeyboardButton می‌توانید هر پیوندی را در دکمه زیر پیام‌ها قرار دهید تا در قالب مینی‌اپ باز شود.</p>
+            <p>همچنین با استفاده از فیلد مشابه web_app در KeyboardButton می‌توانید هر پیوندی را در دکمه صفحه‌کلید، همراه پیام‌ها قرار دهید تا در قالب مینی‌اپ باز شود.</p>
+        </section>
+
+        <footer class="module-footer">
+            <div class="navigation-links">
+                <a href="module-mini-01-introduction.html" class="prev">← معرفی و مثال‌ها</a>
+                <a href="module-mini-03-implementation.html" class="next">پیاده‌سازی مینی‌اپ‌ها →</a>
+            </div>
+        </footer>
+    </article>
+    <script src="../../js/navigation.js"></script>
+</body>
+</html>

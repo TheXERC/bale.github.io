@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ساختار داده Update در API بازوی بله - فیلدها و انواع آپدیت">
+  <title>Update | مستندات بازوی بله</title>
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <div class="main-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <nav>
+        <h3>شروع سریع</h3>
+        <ul>
+          <li><a href="../../index.html">خانه</a></li>
+          <li><a href="module-01-bot-creation.html">ساخت بازو</a></li>
+          <li><a href="module-02-making-requests.html">ایجاد درخواست</a></li>
+          <li><a href="module-03-getting-updates.html">دریافت آپدیت‌ها</a></li>
+        </ul>
+
+        <h3>متدهای دریافت آپدیت</h3>
+        <ul>
+          <li><a href="module-04-update.html" class="active">Update</a></li>
+          <li><a href="module-05-getUpdates.html">getUpdates</a></li>
+          <li><a href="module-06-setWebhook.html">setWebhook</a></li>
+          <li><a href="module-07-deleteWebhook.html">deleteWebhook</a></li>
+          <li><a href="module-08-getWebhookInfo.html">getWebhookInfo</a></li>
+        </ul>
+
+        <h3>انواع داده‌ها</h3>
+        <ul>
+          <li><a href="module-09-user.html">User</a></li>
+          <li><a href="module-10-chat.html">Chat</a></li>
+          <li><a href="module-11-message.html">Message</a></li>
+          <li><a href="module-12-keyboard-types.html">انواع کیبورد</a></li>
+        </ul>
+
+        <h3>ارسال فایل‌ها</h3>
+        <ul>
+          <li><a href="module-13-sending-files.html">راهنمای ارسال فایل</a></li>
+        </ul>
+
+        <h3>مینی‌اپ‌ها</h3>
+        <ul>
+          <li><a href="../miniapp/index.html">معرفی مینی‌اپ</a></li>
+          <li><a href="../miniapp/module-01-intro.html">شروع به کار</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+      <header>
+        <h1>Update</h1>
+      </header>
+
+      <article class="module-content">
+        <section>
+          <p>این شیء بیانگر یک آپدیت دریافتی است. به ازای هر اتفاق در گفتگوها و هر تعامل کاربر با بازو یک <em>آپدیت</em> ایجاد می‌شود که نوع داده مشخصی دارد.</p>
+          
+          <p><strong>نکته مهم:</strong> حداکثر یکی از پارامترهای اختیاری می‌تواند در هر آپدیت داده شده وجود داشته باشد. به طور مثال یک آپدیت نمی‌تواند همزمان <em>message</em> و <em>callback_query</em> را داشته باشد.</p>
+        </section>
+
+        <section>
+          <h2>فیلدهای Update</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>فیلد</th>
+                <th>نوع</th>
+                <th>شرح</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>update_id</code></td>
+                <td>Integer</td>
+                <td>شناسه منحصربه‌فرد آپدیت. شناسه‌های آپدیت از صفر آغاز شده و به ترتیب افزایش می‌یابند. این ID مخصوصاً زمانی به کار می‌آید که از وب‌هوک استفاده کنید، زیرا به شما اجازه می‌دهد که آپدیت‌های تکراری را نادیده گرفته و یا اگر از ترتیب خارج شده باشند، دنباله آپدیت درست را بازیابی کنید.</td>
+              </tr>
+              <tr>
+                <td><code>message</code></td>
+                <td><a href="module-11-message.html">Message</a></td>
+                <td><em>اختیاری</em>. پیام دریافتی جدید از هر نوعی – متن، تصویر، استیکر و غیره</td>
+              </tr>
+              <tr>
+                <td><code>edited_message</code></td>
+                <td><a href="module-11-message.html">Message</a></td>
+                <td><em>اختیاری</em>. نسخه ویرایش شده پیامی که در گذشته برای بازو ارسال شده است.</td>
+              </tr>
+              <tr>
+                <td><code>callback_query</code></td>
+                <td><a href="module-xx-callback-query.html">CallbackQuery</a></td>
+                <td><em>اختیاری</em>. callback query دریافتی جدید. هنگامی که بر روی دکمه‌های inline پیام‌ها کلیک می‌شود، یک آپدیت دارای این فیلد ارسال می‌شود. فیلد data در شئ CallbackQuery برابر با مقداری است که هنگام تعریف دکمه مشخص می‌شود.</td>
+              </tr>
+              <tr>
+                <td><code>pre_checkout_query</code></td>
+                <td><a href="module-xx-pre-checkout-query.html">PreCheckoutQuery</a></td>
+                <td><em>اختیاری</em>. زمانی که کاربر پرداخت را از طریق پیام درخواست پول کیف‌پولی انجام بدهد، قبل از نهایی شدن پرداخت، یک آپدیت با این فیلد برای بررسی تراکنش به بازو ارسال می‌شود. این شی شامل تمام اطلاعات مربوط به پرداخت است.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section>
+          <h2>مثال Update</h2>
+          <pre><code>{
+  "update_id": 123456789,
+  "message": {
+    "message_id": 42,
+    "from": {
+      "id": 987654321,
+      "first_name": "کاربر",
+      "username": "user_example"
+    },
+    "chat": {
+      "id": 987654321,
+      "first_name": "کاربر",
+      "username": "user_example",
+      "type": "private"
+    },
+    "date": 1699999999,
+    "text": "سلام!"
+  }
+}</code></pre>
+        </section>
+
+        <section>
+          <h2>انواع دیگر آپدیت</h2>
+          <p>علاوه بر فیلدهای بالا، آپدیت‌ها می‌توانند شامل فیلدهای دیگری نیز باشند مانند:</p>
+          <ul>
+            <li><code>channel_post</code> - پیام جدید در کانال</li>
+            <li><code>edited_channel_post</code> - پیام ویرایش شده در کانال</li>
+            <li><code>inline_query</code> - کوئری inline دریافتی</li>
+            <li><code>chosen_inline_result</code> - نتیجه انتخاب شده از کوئری inline</li>
+            <li><code>shipping_query</code> - کوئری حمل و نقل</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>مرحله بعد</h2>
+          <p>برای یادگیری نحوه دریافت آپدیت‌ها با استفاده از متد getUpdates، بخش <a href="module-05-getUpdates.html">getUpdates</a> را مطالعه کنید.</p>
+        </section>
+      </article>
+
+      <footer>
+        <p>
+          <a href="../../index.html">← بازگشت به صفحه اصلی</a> | 
+          <a href="module-03-getting-updates.html">مرحله قبل: دریافت آپدیت‌ها</a> |
+          <a href="module-05-getUpdates.html">مرحله بعد: getUpdates →</a>
+        </p>
+      </footer>
+    </main>
+  </div>
+
+  <script src="../../js/navigation.js"></script>
+</body>
+</html>

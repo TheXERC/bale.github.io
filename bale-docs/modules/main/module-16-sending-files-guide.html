@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>راهنمای ارسال فایل - مستندات بازوی بله</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <nav class="module-nav">
+        <a href="../index.html">فهرست اصلی</a>
+        <span>›</span>
+        <a href="#file-id">ارسال با file_id</a>
+        <span>›</span>
+        <a href="#url">ارسال با URL</a>
+        <span>›</span>
+        <a href="#upload">آپلود مستقیم</a>
+    </nav>
+
+    <main class="module-content">
+        <header>
+            <h1>راهنمای ارسال فایل‌ها</h1>
+            <p class="module-description">روش‌های مختلف ارسال فایل در API بله</p>
+        </header>
+
+        <section id="overview" class="api-section">
+            <h2>بررسی کلی</h2>
+            <p>برای ارسال فایل‌ها (عکس، ویدیو، صوت، سند و...) در بله، سه روش اصلی وجود دارد:</p>
+            <ol>
+                <li>استفاده از <code>file_id</code> فایل‌های قبلاً آپلود شده</li>
+                <li>ارسال با استفاده از URL عمومی</li>
+                <li>آپلود مستقیم فایل از طریق multipart/form-data</li>
+            </ol>
+        </section>
+
+        <section id="file-id" class="api-section">
+            <h2>ارسال با استفاده از file_id</h2>
+            <p>این روش سریع‌ترین و کارآمدترین روش برای ارسال فایل‌هایی است که قبلاً توسط بازوی شما آپلود شده‌اند.</p>
+
+            <h3>مزایا:</h3>
+            <ul>
+                <li>سرعت بالا (بدون نیاز به آپلود مجدد)</li>
+                <li>مصرف کمتر پهنای باند</li>
+                <li>عدم محدودیت حجم (چون فایل قبلاً آپلود شده)</li>
+            </ul>
+
+            <h3>محدودیت‌ها:</h3>
+            <ul>
+                <li>فایل باید قبلاً توسط همان بازو آپلود شده باشد</li>
+                <li>file_id‌ها بین بازوهای مختلف متفاوت هستند</li>
+            </ul>
+
+            <div class="code-example">
+                <h3>مثال:</h3>
+                <pre><code>{
+  "method": "sendPhoto",
+  "chat_id": 123456789,
+  "photo": "AgACAgIAAx..." // file_id عکس قبلاً آپلود شده
+}</code></pre>
+            </div>
+
+            <div class="info-box">
+                <p><strong>نکته:</strong> file_id‌ها معمولاً طولانی هستند و با حروف بزرگ و کوچک و اعداد شروع می‌شوند.</p>
+            </div>
+        </section>
+
+        <section id="url" class="api-section">
+            <h2>ارسال با استفاده از URL</h2>
+            <p>می‌توانید فایل را از یک URL عمومی HTTP یا HTTPS ارسال کنید.</p>
+
+            <h3>مزایا:</h3>
+            <ul>
+                <li>نیاز به آپلود فایل ندارید</li>
+                <li>مناسب برای فایل‌های میزبانی شده در سرورهای دیگر</li>
+            </ul>
+
+            <h3>محدودیت‌ها:</h3>
+            <ul>
+                <li>URL باید عمومی و قابل دسترس باشد</li>
+                <li>سرور بله باید بتواند به URL دسترسی داشته باشد</li>
+                <li>حداکثر حجم فایل: ۲۰ مگابایت برای عکس، ۵۰ مگابایت برای سایر فایل‌ها</li>
+            </ul>
+
+            <div class="code-example">
+                <h3>مثال:</h3>
+                <pre><code>{
+  "method": "sendPhoto",
+  "chat_id": 123456789,
+  "photo": "https://example.com/images/photo.jpg"
+}</code></pre>
+            </div>
+
+            <div class="info-box">
+                <p><strong>نکته:</strong> URL باید مستقیماً به فایل اشاره کند، نه به یک صفحه وب.</p>
+            </div>
+        </section>
+
+        <section id="upload" class="api-section">
+            <h2>آپلود مستقیم فایل</h2>
+            <p>برای ارسال فایل‌های جدید، باید آن‌ها را به صورت multipart/form-data آپلود کنید.</p>
+
+            <h3>مزایا:</h3>
+            <ul>
+                <li>امکان ارسال هر فایلی</li>
+                <li>کنترل کامل روی محتوای فایل</li>
+            </ul>
+
+            <h3>محدودیت‌ها:</h3>
+            <ul>
+                <li>حداکثر حجم فایل: ۱۰ مگابایت برای عکس، ۵۰ مگابایت برای سایر فایل‌ها</li>
+                <li>سرعت پایین‌تر به دلیل آپلود</li>
+                <li>مصرف بیشتر پهنای باند</li>
+            </ul>
+
+            <h3>روش آپلود:</h3>
+            <ol>
+                <li>فایل را به عنوان بخشی از درخواست multipart/form-data ضمیمه کنید</li>
+                <li>در پارامتر مربوطه، از <code>attach://&lt;نام_فایل&gt;</code> استفاده کنید</li>
+                <li>فایل را با همان نام در بخش files درخواست قرار دهید</li>
+            </ol>
+
+            <div class="code-example">
+                <h3>مثال با curl:</h3>
+                <pre><code>curl -X POST "https://api.bale.ai/bot&lt;TOKEN&gt;/sendPhoto" \
+  -F "chat_id=123456789" \
+  -F "photo=@/path/to/photo.jpg" \
+  -F "caption=توضیحات عکس"</code></pre>
+            </div>
+
+            <div class="code-example">
+                <h3>مثال با Python (requests):</h3>
+                <pre><code>import requests
+
+TOKEN = "YOUR_BOT_TOKEN"
+chat_id = 123456789
+
+with open('photo.jpg', 'rb') as photo:
+    files = {'photo': photo}
+    data = {
+        'chat_id': chat_id,
+        'caption': 'توضیحات عکس'
+    }
+    response = requests.post(
+        f'https://api.bale.ai/bot{TOKEN}/sendPhoto',
+        files=files,
+        data=data
+    )</code></pre>
+            </div>
+        </section>
+
+        <section id="limits" class="api-section">
+            <h2>محدودیت‌های حجم فایل</h2>
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>نوع فایل</th>
+                        <th>حداکثر حجم</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>عکس (Photo)</td>
+                        <td>۱۰ مگابایت</td>
+                    </tr>
+                    <tr>
+                        <td>ویدیو (Video)</td>
+                        <td>۵۰ مگابایت</td>
+                    </tr>
+                    <tr>
+                        <td>انیمیشن (Animation/GIF)</td>
+                        <td>۵۰ مگابایت</td>
+                    </tr>
+                    <tr>
+                        <td>صوتی (Audio)</td>
+                        <td>۵۰ مگابایت</td>
+                    </tr>
+                    <tr>
+                        <td>پیام صوتی (Voice)</td>
+                        <td>۵۰ مگابایت</td>
+                    </tr>
+                    <tr>
+                        <td>سند (Document)</td>
+                        <td>۵۰ مگابایت</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="best-practices" class="api-section">
+            <h2>بهترین روش‌ها</h2>
+            <ul>
+                <li>برای فایل‌های تکراری، همیشه از <code>file_id</code> استفاده کنید</li>
+                <li>قبل از آپلود مستقیم، بررسی کنید که فایل قبلاً آپلود نشده باشد</li>
+                <li>برای فایل‌های بزرگ، از URL استفاده کنید اگر ممکن است</li>
+                <li>همیشه caption مناسب برای فایل‌ها اضافه کنید</li>
+                <li>برای عکس‌ها، کیفیت مناسب را انتخاب کنید تا حجم کمتری داشته باشند</li>
+            </ul>
+        </section>
+
+        <nav class="module-navigation">
+            <a href="module-15-other-types.html" class="prev">قبلی: سایر انواع</a>
+            <a href="../index.html" class="next">بازگشت به فهرست اصلی</a>
+        </nav>
+    </main>
+
+    <script src="../js/navigation.js"></script>
+</body>
+</html>

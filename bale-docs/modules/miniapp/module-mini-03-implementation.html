@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پیاده‌سازی مینی‌اپ‌ها - WebApp و متدها</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <article class="module-content">
+        <header>
+            <nav class="breadcrumb">
+                <a href="../../index.html">خانه</a> / 
+                <a href="../miniapp-index.html">مستندات مینی‌اپ</a> / 
+                <span>پیاده‌سازی مینی‌اپ‌ها</span>
+            </nav>
+            <h1>پیاده‌سازی مینی‌اپ‌ها</h1>
+        </header>
+
+        <section id="implementation-intro">
+            <p>همانطور که گفته شد، مینی‌اپ‌ها قابلیت استفاده از تمام امکانات صفحات وب را دارا هستند. این قابلیت‌ها حتی شامل مواردی مانند کسب اجازه برای دسترسی به میکروفون، دوربین و موقعیت مکانی می‌باشند.</p>
+            <p>اما ويژگی اصلی مینی‌اپ، ارتباط با اپلیکیشن بله و تعامل با کاربرها از طریق آن می‌باشد. برای برقراری ارتباط مینی‌اپ‌تان با کلاینت بله، script زیر را قبل از هر script دیگری در ابتدای &lt;head&gt; فایل اصلی html خود قرار دهید:</p>
+            <pre><code>&lt;script src="https://tapi.bale.ai/miniapp.js?3"&gt;&lt;/script&gt;</code></pre>
+            <p>با اجرای این کد، شیء window.Bale.WebApp با ویژگی‌هایی که در ادامه توضیح داده شدند، ایجاد خواهد شد.</p>
+        </section>
+
+        <section id="webapp-object">
+            <h2>WebApp</h2>
+            <p>شیء اصلی برای تعامل با اپلیکیشن بله.</p>
+            
+            <h3>ویژگی‌ها</h3>
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نسخه</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>initData</td>
+                        <td>1.0</td>
+                        <td>String</td>
+                        <td>یک رشته که حاوی داده خام ارسال شده به مینی‌اپ است و می‌توان از آن برای اعتبارسنجی داده‌ها استفاده کرد.</td>
+                    </tr>
+                    <tr>
+                        <td>initDataUnsafe</td>
+                        <td>1.0</td>
+                        <td>WebAppInitData</td>
+                        <td>شی‌ای شامل داده‌های ورودی منتقل‌شده به مینی اپ.<br><strong>هشدار:</strong> این داده‌ها را تنها پس از اعتبارسنجی در سرور بازو استفاده کنید، زیرا ممکن است دارای مقادیر قدیمی یا جعلی باشند.</td>
+                    </tr>
+                    <tr>
+                        <td>version</td>
+                        <td>1.0</td>
+                        <td>String</td>
+                        <td>نسخه‌ای از API مینی‌اپ که کلاینت کاربر از آن پشتیبانی می‌کند.</td>
+                    </tr>
+                    <tr>
+                        <td>isIframe</td>
+                        <td>1.0</td>
+                        <td>Boolean</td>
+                        <td>نشان‌دهنده‌ پلتفرمی که از طریق آن مینی‌اپ باز شده است. اگر true باشد یعنی از وب باز شده است و اگر false باشد، یعنی از اندروید باز شده است.</td>
+                    </tr>
+                    <tr>
+                        <td>themeParams</td>
+                        <td>1.0</td>
+                        <td>ThemeParams</td>
+                        <td>شی‌ای شامل اطلاعات تم استفاده‌شده فعلی در اپلیکیشن بله.</td>
+                    </tr>
+                    <tr>
+                        <td>isClosingConfirmationEnabled</td>
+                        <td>1.0</td>
+                        <td>Boolean</td>
+                        <td>مقدار true اگر دیالوگ تأیید برای بستن مینی اپ فعال باشد، مقدار false اگر غیرفعال باشد.</td>
+                    </tr>
+                    <tr>
+                        <td>BackButton</td>
+                        <td>1.0</td>
+                        <td>BackButton</td>
+                        <td>آبجکتی برای کنترل دکمه برگشت که می‌تواند در هدر مینی‌اپ در رابط کاربری بله نمایش داده شود.</td>
+                    </tr>
+                    <tr>
+                        <td>SettingsButton</td>
+                        <td>1.0</td>
+                        <td>SettingsButton</td>
+                        <td>آبجکتی برای کنترل گزینه‌ی تنظیمات در منوی زمینه‌ی مینی‌اپ در رابط کاربری بله.</td>
+                    </tr>
+                    <tr>
+                        <td>colorScheme</td>
+                        <td>1.0</td>
+                        <td>String</td>
+                        <td>نشان‌دهنده‌ی تم کاربر در اپلیکیشن بله است؛ مقدار light برای تم روشن و dark برای تم تاریک.</td>
+                    </tr>
+                    <tr>
+                        <td>isMiniAppSupported</td>
+                        <td>1.0</td>
+                        <td>Boolean</td>
+                        <td>نشان‌دهنده‌ی پشتیبانی شدن مینی‌اپ در اپلیکیشن بله کاربر است.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <footer class="module-footer">
+            <div class="navigation-links">
+                <a href="module-mini-02-access-methods.html" class="prev">← دسترسی به مینی‌اپ‌ها</a>
+                <a href="module-mini-04-webapp-methods.html" class="next">متدهای WebApp →</a>
+            </div>
+        </footer>
+    </article>
+    <script src="../../js/navigation.js"></script>
+</body>
+</html>

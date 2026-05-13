@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>انواع ChatMember - مستندات بازوی بله</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <nav class="module-nav">
+        <a href="../index.html">فهرست اصلی</a>
+        <span>›</span>
+        <a href="#chatmember">ChatMember</a>
+        <span>›</span>
+        <a href="#chatmemberowner">ChatMemberOwner</a>
+        <span>›</span>
+        <a href="#chatmemberadministrator">ChatMemberAdministrator</a>
+        <span>›</span>
+        <a href="#chatmembermember">ChatMemberMember</a>
+        <span>›</span>
+        <a href="#chatmemberrestricted">ChatMemberRestricted</a>
+        <span>›</span>
+        <a href="#chatphoto">ChatPhoto</a>
+    </nav>
+
+    <main class="module-content">
+        <header>
+            <h1>انواع اعضای گفتگو</h1>
+            <p class="module-description">ساختارهای داده‌ای مربوط به اعضای گروه‌ها و کانال‌ها</p>
+        </header>
+
+        <section id="chatmember" class="api-section">
+            <h2>ChatMember</h2>
+            <p>این شیء نمایندهٔ یک عضو در گفتگو (گروه یا کانال) است. نوع عضو مشخص می‌کند که کدام یک از انواع زیر استفاده شود.</p>
+            
+            <div class="info-box">
+                <p><strong>انواع ChatMember:</strong></p>
+                <ul>
+                    <li><a href="#chatmemberowner">ChatMemberOwner</a> - مالک گفتگو</li>
+                    <li><a href="#chatmemberadministrator">ChatMemberAdministrator</a> - مدیر گفتگو</li>
+                    <li><a href="#chatmembermember">ChatMemberMember</a> - عضو عادی</li>
+                    <li><a href="#chatmemberrestricted">ChatMemberRestricted</a> - عضو محدود شده</li>
+                    <li>ChatMemberLeft - عضوی که ترک کرده (در این مستندات پوشش داده نشده)</li>
+                    <li>ChatMemberBanned - عضوی که بن شده (در این مستندات پوشش داده نشده)</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="chatmemberowner" class="api-section">
+            <h2>ChatMemberOwner</h2>
+            <p>نمایندهٔ مالک یک گفتگو.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>status</td>
+                        <td>String</td>
+                        <td>همیشه <code>creator</code> است.</td>
+                    </tr>
+                    <tr>
+                        <td>user</td>
+                        <td><a href="module-09-user-chat.html#user">User</a></td>
+                        <td>اطلاعات کاربر مالک</td>
+                    </tr>
+                    <tr>
+                        <td>is_anonymous</td>
+                        <td>Boolean</td>
+                        <td>آیا مالک به صورت ناشناس نمایش داده می‌شود؟</td>
+                    </tr>
+                    <tr>
+                        <td>custom_title</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. عنوان سفارشی مالک</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="chatmemberadministrator" class="api-section">
+            <h2>ChatMemberAdministrator</h2>
+            <p>نمایندهٔ یک مدیر در گفتگو.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>status</td>
+                        <td>String</td>
+                        <td>همیشه <code>administrator</code> است.</td>
+                    </tr>
+                    <tr>
+                        <td>user</td>
+                        <td><a href="module-09-user-chat.html#user">User</a></td>
+                        <td>اطلاعات کاربر مدیر</td>
+                    </tr>
+                    <tr>
+                        <td>can_be_edited</td>
+                        <td>Boolean</td>
+                        <td>آیا می‌توان وضعیت این مدیر را تغییر داد؟</td>
+                    </tr>
+                    <tr>
+                        <td>is_anonymous</td>
+                        <td>Boolean</td>
+                        <td>آیا مدیر به صورت ناشناس نمایش داده می‌شود؟</td>
+                    </tr>
+                    <tr>
+                        <td>can_manage_chat</td>
+                        <td>Boolean</td>
+                        <td>آیا مدیر می‌تواند گفتگو را مدیریت کند؟</td>
+                    </tr>
+                    <tr>
+                        <td>can_delete_messages</td>
+                        <td>Boolean</td>
+                        <td>آیا مدیر می‌تواند پیام‌ها را حذف کند؟</td>
+                    </tr>
+                    <tr>
+                        <td>can_manage_video_chats</td>
+                        <td>Boolean</td>
+                        <td>آیا مدیر می‌تواند چت‌های ویدیویی را مدیریت کند؟</td>
+                    </tr>
+                    <tr>
+                        <td>can_restrict_members</td>
+                        <td>Boolean</td>
+                        <td>آیا مدیر می‌تواند اعضا را محدود کند؟</td>
+                    </tr>
+                    <tr>
+                        <td>can_promote_members</td>
+                        <td>Boolean</td>
+                        <td>آیا مدیر می‌تواند اعضا را ارتقا دهد؟</td>
+                    </tr>
+                    <tr>
+                        <td>can_change_info</td>
+                        <td>Boolean</td>
+                        <td>آیا مدیر می‌تواند اطلاعات گفتگو را تغییر دهد؟</td>
+                    </tr>
+                    <tr>
+                        <td>can_invite_users</td>
+                        <td>Boolean</td>
+                        <td>آیا مدیر می‌تواند کاربران را دعوت کند؟</td>
+                    </tr>
+                    <tr>
+                        <td>can_post_messages</td>
+                        <td>Boolean</td>
+                        <td><em>اختیاری</em>. آیا مدیر می‌تواند در کانال پست بگذارد؟ (فقط کانال)</td>
+                    </tr>
+                    <tr>
+                        <td>can_edit_messages</td>
+                        <td>Boolean</td>
+                        <td><em>اختیاری</em>. آیا مدیر می‌تواند پیام‌ها را ویرایش کند؟ (فقط کانال)</td>
+                    </tr>
+                    <tr>
+                        <td>can_pin_messages</td>
+                        <td>Boolean</td>
+                        <td><em>اختیاری</em>. آیا مدیر می‌تواند پیام‌ها را سنجاق کند؟</td>
+                    </tr>
+                    <tr>
+                        <td>can_manage_topics</td>
+                        <td>Boolean</td>
+                        <td>آیا مدیر می‌تواند موضوعات را مدیریت کند؟</td>
+                    </tr>
+                    <tr>
+                        <td>custom_title</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. عنوان سفارشی مدیر</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="chatmembermember" class="api-section">
+            <h2>ChatMemberMember</h2>
+            <p>نمایندهٔ یک عضو عادی در گفتگو.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>status</td>
+                        <td>String</td>
+                        <td>همیشه <code>member</code> است.</td>
+                    </tr>
+                    <tr>
+                        <td>user</td>
+                        <td><a href="module-09-user-chat.html#user">User</a></td>
+                        <td>اطلاعات کاربر عضو</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="chatmemberrestricted" class="api-section">
+            <h2>ChatMemberRestricted</h2>
+            <p>نمایندهٔ یک عضو محدود شده در گفتگو.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>status</td>
+                        <td>String</td>
+                        <td>همیشه <code>restricted</code> است.</td>
+                    </tr>
+                    <tr>
+                        <td>user</td>
+                        <td><a href="module-09-user-chat.html#user">User</a></td>
+                        <td>اطلاعات کاربر محدود شده</td>
+                    </tr>
+                    <tr>
+                        <td>is_member</td>
+                        <td>Boolean</td>
+                        <td>آیا کاربر عضو فعلی گفتگو است؟</td>
+                    </tr>
+                    <tr>
+                        <td>can_send_messages</td>
+                        <td>Boolean</td>
+                        <td>آیا کاربر می‌تواند پیام ارسال کند؟</td>
+                    </tr>
+                    <tr>
+                        <td>can_send_audios</td>
+                        <td>Boolean</td>
+                        <td>آیا کاربر می‌تواند فایل صوتی ارسال کند؟</td>
+                    </tr>
+                    <tr>
+                        <td>can_send_documents</td>
+                        <td>Boolean</td>
+                        <td>آیا کاربر می‌تواند فایل سند ارسال کند؟</td>
+                    </tr>
+                    <tr>
+                        <td>can_send_photos</td>
+                        <td>Boolean</td>
+                        <td>آیا کاربر می‌تواند عکس ارسال کند؟</td>
+                    </tr>
+                    <tr>
+                        <td>can_send_videos</td>
+                        <td>Boolean</td>
+                        <td>آیا کاربر می‌تواند ویدیو ارسال کند؟</td>
+                    </tr>
+                    <tr>
+                        <td>can_send_video_notes</td>
+                        <td>Boolean</td>
+                        <td>آیا کاربر می‌تواند ویدیو نوت ارسال کند؟</td>
+                    </tr>
+                    <tr>
+                        <td>can_send_voice_notes</td>
+                        <td>Boolean</td>
+                        <td>آیا کاربر می‌تواند پیام صوتی ارسال کند؟</td>
+                    </tr>
+                    <tr>
+                        <td>can_send_polls</td>
+                        <td>Boolean</td>
+                        <td>آیا کاربر می‌تواند نظرسنجی ارسال کند؟</td>
+                    </tr>
+                    <tr>
+                        <td>can_send_other_messages</td>
+                        <td>Boolean</td>
+                        <td>آیا کاربر می‌تواند سایر پیام‌ها را ارسال کند؟</td>
+                    </tr>
+                    <tr>
+                        <td>can_add_web_page_previews</td>
+                        <td>Boolean</td>
+                        <td>آیا کاربر می‌تواند پیش‌نمایش وب‌صفحه اضافه کند؟</td>
+                    </tr>
+                    <tr>
+                        <td>can_change_info</td>
+                        <td>Boolean</td>
+                        <td>آیا کاربر می‌تواند اطلاعات گفتگو را تغییر دهد؟</td>
+                    </tr>
+                    <tr>
+                        <td>can_invite_users</td>
+                        <td>Boolean</td>
+                        <td>آیا کاربر می‌تواند کاربران را دعوت کند؟</td>
+                    </tr>
+                    <tr>
+                        <td>can_pin_messages</td>
+                        <td>Boolean</td>
+                        <td>آیا کاربر می‌تواند پیام‌ها را سنجاق کند؟</td>
+                    </tr>
+                    <tr>
+                        <td>until_date</td>
+                        <td>Integer</td>
+                        <td>زمان پایان محدودیت به صورت یونیکس</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="chatphoto" class="api-section">
+            <h2>ChatPhoto</h2>
+            <p>این شیء نمایندهٔ تصویر یک گفتگو است.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>small_file_id</td>
+                        <td>String</td>
+                        <td>شناسه فایل تصویر کوچک (۱۶۰x۱۶۰)</td>
+                    </tr>
+                    <tr>
+                        <td>small_file_unique_id</td>
+                        <td>String</td>
+                        <td>شناسه منحصربه‌فرد تصویر کوچک</td>
+                    </tr>
+                    <tr>
+                        <td>big_file_id</td>
+                        <td>String</td>
+                        <td>شناسه فایل تصویر بزرگ (۶۴۰x۶۴۰)</td>
+                    </tr>
+                    <tr>
+                        <td>big_file_unique_id</td>
+                        <td>String</td>
+                        <td>شناسه منحصربه‌فرد تصویر بزرگ</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <nav class="module-navigation">
+            <a href="module-13-callback-webapp.html" class="prev">قبلی: CallbackQuery و WebApp</a>
+            <a href="module-15-other-types.html" class="next">بعدی: سایر انواع</a>
+        </nav>
+    </main>
+
+    <script src="../js/navigation.js"></script>
+</body>
+</html>

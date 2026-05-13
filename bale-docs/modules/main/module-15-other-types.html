@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سایر انواع - مستندات بازوی بله</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <nav class="module-nav">
+        <a href="../index.html">فهرست اصلی</a>
+        <span>›</span>
+        <a href="#responseparameters">ResponseParameters</a>
+        <span>›</span>
+        <a href="#inputfile">InputFile</a>
+        <span>›</span>
+        <a href="#inputmedia">InputMedia</a>
+    </nav>
+
+    <main class="module-content">
+        <header>
+            <h1>سایر انواع کاربردی</h1>
+            <p class="module-description">ساختارهای داده‌ای تکمیلی در API بله</p>
+        </header>
+
+        <section id="responseparameters" class="api-section">
+            <h2>ResponseParameters</h2>
+            <p>این شیء نمایندهٔ پارامترهای پاسخ خطا است که اطلاعات بیشتری دربارهٔ دلیل خطا ارائه می‌دهد.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>migrate_to_chat_id</td>
+                        <td>Integer</td>
+                        <td><em>اختیاری</em>. اگر گروه به سوپرگروه ارتقا یافته باشد، شناسه سوپرگروه جدید را نشان می‌دهد.</td>
+                    </tr>
+                    <tr>
+                        <td>retry_after</td>
+                        <td>Integer</td>
+                        <td><em>اختیاری</em>. تعداد ثانیه‌هایی که باید قبل از ارسال درخواست مجدد صبر کنید (در صورت محدود شدن نرخ).</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="code-example">
+                <h3>مثال پاسخ خطا:</h3>
+                <pre><code>{
+  "ok": false,
+  "error_code": 429,
+  "description": "Too Many Requests: retry after 5",
+  "parameters": {
+    "retry_after": 5
+  }
+}</code></pre>
+            </div>
+        </section>
+
+        <section id="inputfile" class="api-section">
+            <h2>InputFile</h2>
+            <p>این نوع نمایندهٔ یک فایل برای آپلود است. InputFile می‌تواند به یکی از روش‌های زیر باشد:</p>
+            
+            <ul class="method-list">
+                <li>
+                    <strong>رشته (String):</strong>
+                    <ul>
+                        <li>اگر رشته با <code>attach://</code> شروع شود، فایل از طریق multipart/form-data آپلود می‌شود.</li>
+                        <li>اگر رشته یک <code>file_id</code> معتبر باشد، فایل قبلاً آپلود شده استفاده می‌شود.</li>
+                        <li>اگر رشته یک URL HTTP/HTTPS باشد، فایل از آن آدرس دانلود می‌شود.</li>
+                    </ul>
+                </li>
+                <li>
+                    <strong>آپلود مستقیم:</strong>
+                    <ul>
+                        <li>فایل به صورت multipart/form-data همراه با درخواست ارسال می‌شود.</li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="info-box">
+                <p><strong>نکات مهم:</strong></p>
+                <ul>
+                    <li>حداکثر حجم فایل برای عکس: ۱۰ مگابایت</li>
+                    <li>حداکثر حجم فایل برای ویدیو: ۵۰ مگابایت</li>
+                    <li>حداکثر حجم فایل برای سایر فایل‌ها: ۵۰ مگابایت</li>
+                    <li>برای استفاده از file_id، فایل باید قبلاً توسط همان بازو آپلود شده باشد.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="inputmedia" class="api-section">
+            <h2>InputMedia</h2>
+            <p>این نوع نمایندهٔ یک فایل رسانه‌ای عمومی برای آپلود است. انواع مختلف InputMedia عبارتند از:</p>
+            
+            <div class="info-box">
+                <p><strong>انواع InputMedia:</strong></p>
+                <ul>
+                    <li><a href="#inputmediaphoto">InputMediaPhoto</a> - عکس</li>
+                    <li><a href="#inputmediavideo">InputMediaVideo</a> - ویدیو</li>
+                    <li><a href="#inputmediaanimation">InputMediaAnimation</a> - انیمیشن (GIF)</li>
+                    <li><a href="#inputmediaaudio">InputMediaAudio</a> - فایل صوتی</li>
+                    <li><a href="#inputmediadocument">InputMediaDocument</a> - فایل سند</li>
+                </ul>
+            </div>
+
+            <h3 id="inputmediaphoto">InputMediaPhoto</h3>
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>type</td>
+                        <td>String</td>
+                        <td>همیشه <code>photo</code></td>
+                    </tr>
+                    <tr>
+                        <td>media</td>
+                        <td>String</td>
+                        <td>شناسه فایل یا URL</td>
+                    </tr>
+                    <tr>
+                        <td>caption</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. توضیحات عکس (حداکثر ۱۰۲۴ کاراکتر)</td>
+                    </tr>
+                    <tr>
+                        <td>parse_mode</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. حالت قالب‌بندی متن (HTML یا MarkdownV2)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 id="inputmediavideo">InputMediaVideo</h3>
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>type</td>
+                        <td>String</td>
+                        <td>همیشه <code>video</code></td>
+                    </tr>
+                    <tr>
+                        <td>media</td>
+                        <td>String</td>
+                        <td>شناسه فایل یا URL</td>
+                    </tr>
+                    <tr>
+                        <td>thumbnail</td>
+                        <td><a href="#inputfile">InputFile</a></td>
+                        <td><em>اختیاری</em>. تصویر بندانگشتی</td>
+                    </tr>
+                    <tr>
+                        <td>caption</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. توضیحات ویدیو</td>
+                    </tr>
+                    <tr>
+                        <td>parse_mode</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. حالت قالب‌بندی متن</td>
+                    </tr>
+                    <tr>
+                        <td>width</td>
+                        <td>Integer</td>
+                        <td><em>اختیاری</em>. عرض ویدیو</td>
+                    </tr>
+                    <tr>
+                        <td>height</td>
+                        <td>Integer</td>
+                        <td><em>اختیاری</em>. ارتفاع ویدیو</td>
+                    </tr>
+                    <tr>
+                        <td>duration</td>
+                        <td>Integer</td>
+                        <td><em>اختیاری</em>. مدت زمان ویدیو به ثانیه</td>
+                    </tr>
+                    <tr>
+                        <td>supports_streaming</td>
+                        <td>Boolean</td>
+                        <td><em>اختیاری</em>. آیا ویدیو از پخش جریانی پشتیبانی می‌کند؟</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 id="inputmediaanimation">InputMediaAnimation</h3>
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>type</td>
+                        <td>String</td>
+                        <td>همیشه <code>animation</code></td>
+                    </tr>
+                    <tr>
+                        <td>media</td>
+                        <td>String</td>
+                        <td>شناسه فایل یا URL</td>
+                    </tr>
+                    <tr>
+                        <td>thumbnail</td>
+                        <td><a href="#inputfile">InputFile</a></td>
+                        <td><em>اختیاری</em>. تصویر بندانگشتی</td>
+                    </tr>
+                    <tr>
+                        <td>caption</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. توضیحات انیمیشن</td>
+                    </tr>
+                    <tr>
+                        <td>parse_mode</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. حالت قالب‌بندی متن</td>
+                    </tr>
+                    <tr>
+                        <td>width</td>
+                        <td>Integer</td>
+                        <td><em>اختیاری</em>. عرض انیمیشن</td>
+                    </tr>
+                    <tr>
+                        <td>height</td>
+                        <td>Integer</td>
+                        <td><em>اختیاری</em>. ارتفاع انیمیشن</td>
+                    </tr>
+                    <tr>
+                        <td>duration</td>
+                        <td>Integer</td>
+                        <td><em>اختیاری</em>. مدت زمان انیمیشن به ثانیه</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 id="inputmediaaudio">InputMediaAudio</h3>
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>type</td>
+                        <td>String</td>
+                        <td>همیشه <code>audio</code></td>
+                    </tr>
+                    <tr>
+                        <td>media</td>
+                        <td>String</td>
+                        <td>شناسه فایل یا URL</td>
+                    </tr>
+                    <tr>
+                        <td>thumbnail</td>
+                        <td><a href="#inputfile">InputFile</a></td>
+                        <td><em>اختیاری</em>. تصویر بندانگشتی</td>
+                    </tr>
+                    <tr>
+                        <td>caption</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. توضیحات فایل صوتی</td>
+                    </tr>
+                    <tr>
+                        <td>parse_mode</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. حالت قالب‌بندی متن</td>
+                    </tr>
+                    <tr>
+                        <td>duration</td>
+                        <td>Integer</td>
+                        <td><em>اختیاری</em>. مدت زمان فایل صوتی به ثانیه</td>
+                    </tr>
+                    <tr>
+                        <td>performer</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. نام اجراکننده</td>
+                    </tr>
+                    <tr>
+                        <td>title</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. عنوان فایل صوتی</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3 id="inputmediadocument">InputMediaDocument</h3>
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>type</td>
+                        <td>String</td>
+                        <td>همیشه <code>document</code></td>
+                    </tr>
+                    <tr>
+                        <td>media</td>
+                        <td>String</td>
+                        <td>شناسه فایل یا URL</td>
+                    </tr>
+                    <tr>
+                        <td>thumbnail</td>
+                        <td><a href="#inputfile">InputFile</a></td>
+                        <td><em>اختیاری</em>. تصویر بندانگشتی</td>
+                    </tr>
+                    <tr>
+                        <td>caption</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. توضیحات فایل سند</td>
+                    </tr>
+                    <tr>
+                        <td>parse_mode</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. حالت قالب‌بندی متن</td>
+                    </tr>
+                    <tr>
+                        <td>disable_content_type_detection</td>
+                        <td>Boolean</td>
+                        <td><em>اختیاری</em>. آیا تشخیص نوع محتوا غیرفعال شود؟</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <nav class="module-navigation">
+            <a href="module-14-chatmember-types.html" class="prev">قبلی: ChatMember Types</a>
+            <a href="module-16-sending-files-guide.html" class="next">بعدی: راهنمای ارسال فایل</a>
+        </nav>
+    </main>
+
+    <script src="../js/navigation.js"></script>
+</body>
+</html>
