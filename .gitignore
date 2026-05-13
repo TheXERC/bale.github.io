@@ -1,4 +1,4 @@
 ```
 # Build artifacts
-bale-docs/modules/main/*.html
+bale-docs/modules/*.html
 ```

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اعتبارسنجی داده‌های مینی‌اپ</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <article class="module-content">
+        <header>
+            <nav class="breadcrumb">
+                <a href="../../index.html">خانه</a> / 
+                <a href="../miniapp-index.html">مستندات مینی‌اپ</a> / 
+                <span>اعتبارسنجی داده‌ها</span>
+            </nav>
+            <h1>اعتبارسنجی داده‌های دریافت‌شده از طریق مینی‌اپ</h1>
+        </header>
+
+        <section id="validation-intro">
+            <p>برای اعتبارسنجی داده‌های دریافت‌شده از طریق مینی‌اپ، باید داده موجود در فیلد Bale.WebApp.initData را به سرور بازو ارسال کنید. این داده‌ها به‌صورت یک رشته url encoded و شامل مجموعه‌ای از key-value ها هستند.</p>
+            <p>انواع داده‌های پیچیده (مانند WebAppUser) به‌صورت JSON-serialized در این رشته قرار می‌گیرند.</p>
+        </section>
+
+        <section id="validation-process">
+            <h2>فرآیند اعتبارسنجی</h2>
+            <p>برای اطمینان از صحت داده‌های دریافت‌شده، می‌توانید مقدار hash دریافت‌شده را با نمایش hexadecimal امضای HMAC-SHA-256 از data-check-string مقایسه کنید. کلید مورد استفاده در این امضا، امضای HMAC-SHA-256 از توکن بازو با رشته ثابت "WebAppData" است.</p>
+            
+            <p>data-check-string شامل تمامی فیلدهای دریافت‌شده است که به ترتیب حروف الفبا مرتب شده‌اند و مانند مثال زیر در کنار یکدیگر قرار گرفته اند. از کاراکتر خط جدید ('\n', 0x0A) به‌عنوان جداکننده استفاده می‌شود.</p>
+            
+            <pre><code>auth_date=&lt;auth_date&gt;\nquery_id=&lt;query_id&gt;\nuser=&lt;user&gt;</code></pre>
+        </section>
+
+        <section id="validation-code">
+            <h3>شبه‌کد بررسی صحت داده‌ها</h3>
+            <pre><code>data_check_string = ...
+secret_key = HMAC_SHA256(&lt;bot_token&gt;, "WebAppData")
+if (hex(HMAC_SHA256(data_check_string, secret_key)) == hash) {
+  // data is sent from Bale
+}</code></pre>
+        </section>
+
+        <section id="timestamp-validation">
+            <h3>بررسی زمان</h3>
+            <p>برای جلوگیری از استفاده از داده‌های قدیمی، می‌توانید مقدار auth_date را بررسی کنید. این مقدار زمان باز شدن مینی‌اپ را در قالب Unix نشان می‌دهد.</p>
+        </section>
+
+        <footer class="module-footer">
+            <div class="navigation-links">
+                <a href="module-mini-07-back-button.html" class="prev">← BackButton و SettingsButton</a>
+                <a href="module-mini-09-events.html" class="next">Events →</a>
+            </div>
+        </footer>
+    </article>
+    <script src="../../js/navigation.js"></script>
+</body>
+</html>

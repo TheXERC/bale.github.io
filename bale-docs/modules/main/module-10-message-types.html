@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message و انواع مرتبط - مستندات بازوی بله</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <nav class="module-nav">
+        <a href="../index.html">فهرست اصلی</a>
+        <span>›</span>
+        <a href="#message">Message</a>
+        <span>›</span>
+        <a href="#messageid">MessageId</a>
+        <span>›</span>
+        <a href="#messageentity">MessageEntity</a>
+    </nav>
+
+    <main class="module-content">
+        <header>
+            <h1>انواع پیام</h1>
+            <p class="module-description">ساختارهای داده‌ای مربوط به پیام‌ها و اجزای آن‌ها</p>
+        </header>
+
+        <section id="message" class="api-section">
+            <h2>Message</h2>
+            <p>این شیء نمایندهٔ یک پیام در بله است.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>message_id</td>
+                        <td>Integer</td>
+                        <td>شناسه یکتای پیام</td>
+                    </tr>
+                    <tr>
+                        <td>from</td>
+                        <td><a href="module-09-user-chat.html#user">User</a></td>
+                        <td><em>اختیاری</em>. فرستنده پیام</td>
+                    </tr>
+                    <tr>
+                        <td>chat</td>
+                        <td><a href="module-09-user-chat.html#chat">Chat</a></td>
+                        <td>گفتگویی که پیام در آن ارسال شده</td>
+                    </tr>
+                    <tr>
+                        <td>date</td>
+                        <td>Integer</td>
+                        <td>زمان ارسال پیام به صورت یونیکس</td>
+                    </tr>
+                    <tr>
+                        <td>text</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. متن پیام</td>
+                    </tr>
+                    <tr>
+                        <td>entities</td>
+                        <td>Array of <a href="#messageentity">MessageEntity</a></td>
+                        <td><em>اختیاری</em>. موجودیت‌های ویژه در متن پیام</td>
+                    </tr>
+                    <tr>
+                        <td>photo</td>
+                        <td>Array of <a href="module-11-media-types.html#photosize">PhotoSize</a></td>
+                        <td><em>اختیاری</em>. عکس‌های موجود در پیام</td>
+                    </tr>
+                    <tr>
+                        <td>animation</td>
+                        <td><a href="module-11-media-types.html#animation">Animation</a></td>
+                        <td><em>اختیاری</em>. فایل انیمیشن</td>
+                    </tr>
+                    <tr>
+                        <td>audio</td>
+                        <td><a href="module-11-media-types.html#audio">Audio</a></td>
+                        <td><em>اختیاری</em>. فایل صوتی</td>
+                    </tr>
+                    <tr>
+                        <td>document</td>
+                        <td><a href="module-11-media-types.html#document">Document</a></td>
+                        <td><em>اختیاری</em>. فایل سند</td>
+                    </tr>
+                    <tr>
+                        <td>video</td>
+                        <td><a href="module-11-media-types.html#video">Video</a></td>
+                        <td><em>اختیاری</em>. فایل ویدیویی</td>
+                    </tr>
+                    <tr>
+                        <td>voice</td>
+                        <td><a href="module-11-media-types.html#voice">Voice</a></td>
+                        <td><em>اختیاری</em>. پیام صوتی</td>
+                    </tr>
+                    <tr>
+                        <td>contact</td>
+                        <td><a href="module-11-media-types.html#contact">Contact</a></td>
+                        <td><em>اختیاری</em>. اطلاعات تماس</td>
+                    </tr>
+                    <tr>
+                        <td>location</td>
+                        <td><a href="module-11-media-types.html#location">Location</a></td>
+                        <td><em>اختیاری</em>. موقعیت مکانی</td>
+                    </tr>
+                    <tr>
+                        <td>invoice</td>
+                        <td><a href="module-11-media-types.html#invoice">Invoice</a></td>
+                        <td><em>اختیاری</em>. اطلاعات فاکتور</td>
+                    </tr>
+                    <tr>
+                        <td>reply_markup</td>
+                        <td><a href="module-12-keyboard-types.html#inlinekeyboardmarkup">InlineKeyboardMarkup</a></td>
+                        <td><em>اختیاری</em>. کیبورد اینلاین ضمیمه شده</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="messageid" class="api-section">
+            <h2>MessageId</h2>
+            <p>شناسه یک پیام.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>message_id</td>
+                        <td>Integer</td>
+                        <td>شناسه یکتای پیام</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="messageentity" class="api-section">
+            <h2>MessageEntity</h2>
+            <p>این شیء نمایندهٔ یک موجودیت ویژه در متن پیام است (مثل لینک، منشن، هشتگ و...).</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>type</td>
+                        <td>String</td>
+                        <td>نوع موجودیت. می‌تواند یکی از موارد زیر باشد:
+                            <ul>
+                                <li><code>mention</code> - منشن کاربر (@username)</li>
+                                <li><code>hashtag</code> - هشتگ (#hashtag)</li>
+                                <li><code>bot_command</code> - دستور بازو (/command)</li>
+                                <li><code>url</code> - لینک URL</li>
+                                <li><code>email</code> - آدرس ایمیل</li>
+                                <li><code>phone_number</code> - شماره تلفن</li>
+                                <li><code>bold</code> - متن ضخیم</li>
+                                <li><code>italic</code> - متن کج</li>
+                                <li><code>underline</code> - متن زیرخط‌دار</li>
+                                <li><code>strikethrough</code> - متن خط‌خورده</li>
+                                <li><code>code</code> - کد تک‌خطی</li>
+                                <li><code>pre</code> - کد چندخطی</li>
+                                <li><code>text_link</code> - لینک متنی</li>
+                                <li><code>text_mention</code> - منشن متنی</li>
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>offset</td>
+                        <td>Integer</td>
+                        <td>موقعیت شروع موجودیت در متن پیام</td>
+                    </tr>
+                    <tr>
+                        <td>length</td>
+                        <td>Integer</td>
+                        <td>طول موجودیت</td>
+                    </tr>
+                    <tr>
+                        <td>url</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. URL برای انواع text_link</td>
+                    </tr>
+                    <tr>
+                        <td>user</td>
+                        <td><a href="module-09-user-chat.html#user">User</a></td>
+                        <td><em>اختیاری</em>. کاربر برای انواع text_mention</td>
+                    </tr>
+                    <tr>
+                        <td>language</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. زبان برنامه‌نویسی برای نوع pre</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <nav class="module-navigation">
+            <a href="module-09-user-chat.html" class="prev">قبلی: User و Chat</a>
+            <a href="module-11-media-types.html" class="next">بعدی: Media Types</a>
+        </nav>
+    </main>
+
+    <script src="../js/navigation.js"></script>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="متد getUpdates در API بازوی بله - دریافت آپدیت‌ها با Long Polling">
+  <title>getUpdates | مستندات بازوی بله</title>
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <div class="main-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <nav>
+        <h3>شروع سریع</h3>
+        <ul>
+          <li><a href="../../index.html">خانه</a></li>
+          <li><a href="module-01-bot-creation.html">ساخت بازو</a></li>
+          <li><a href="module-02-making-requests.html">ایجاد درخواست</a></li>
+          <li><a href="module-03-getting-updates.html">دریافت آپدیت‌ها</a></li>
+        </ul>
+
+        <h3>متدهای دریافت آپدیت</h3>
+        <ul>
+          <li><a href="module-04-update.html">Update</a></li>
+          <li><a href="module-05-getUpdates.html" class="active">getUpdates</a></li>
+          <li><a href="module-06-setWebhook.html">setWebhook</a></li>
+          <li><a href="module-07-deleteWebhook.html">deleteWebhook</a></li>
+          <li><a href="module-08-getWebhookInfo.html">getWebhookInfo</a></li>
+        </ul>
+
+        <h3>انواع داده‌ها</h3>
+        <ul>
+          <li><a href="module-09-user.html">User</a></li>
+          <li><a href="module-10-chat.html">Chat</a></li>
+          <li><a href="module-11-message.html">Message</a></li>
+          <li><a href="module-12-keyboard-types.html">انواع کیبورد</a></li>
+        </ul>
+
+        <h3>ارسال فایل‌ها</h3>
+        <ul>
+          <li><a href="module-13-sending-files.html">راهنمای ارسال فایل</a></li>
+        </ul>
+
+        <h3>مینی‌اپ‌ها</h3>
+        <ul>
+          <li><a href="../miniapp/index.html">معرفی مینی‌اپ</a></li>
+          <li><a href="../miniapp/module-01-intro.html">شروع به کار</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+      <header>
+        <h1>getUpdates</h1>
+      </header>
+
+      <article class="module-content">
+        <section>
+          <p>از این متد برای دریافت آپدیت‌ها با استفاده از long polling استفاده کنید. این متد آرایه‌ای از <a href="module-04-update.html">Update</a> را باز می‌گرداند.</p>
+          
+          <pre><code>GET https://tapi.bale.ai/bot&lt;token&gt;/getUpdates</code></pre>
+        </section>
+
+        <section>
+          <h2>پارامترها</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>پارامتر</th>
+                <th>نوع</th>
+                <th>الزام</th>
+                <th>توضیحات</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>offset</code></td>
+                <td>Integer</td>
+                <td>اختیاری</td>
+                <td>شناسه اولین آپدیتی که باید برگردانده شود. باید یک واحد بیشتر از بیشترین مقدار شناسه‌های مربوط به Update های دریافتی قبلی باشد. به طور پیش‌فرض، ابتدا Update هایی بازگشت داده می شوند که اولین Update تایید نشده را دارند. به محض اینکه getUpdates با یک <em>offset</em> بیشتر از <em>update_id</em> خود فراخوانی شود، Update به صورت تایید شده در نظر گرفته خواهد شد. از مقدار offset منفی هم می‌توان استفاده کرد. از مقدار منفی offset می‌توان برای دریافت Update ها از انتهای صف Update ها استفاده کرد. تمام Update های قبلی فراموش خواهند شد.</td>
+              </tr>
+              <tr>
+                <td><code>limit</code></td>
+                <td>Integer</td>
+                <td>اختیاری</td>
+                <td>حداکثر تعداد آپدیت‌هایی که باید بازگردانده شوند. مقادیر بین ۱ تا ۱۰۰ پذیرفته می‌شوند. پیش‌فرض ۱۰۰ است.</td>
+              </tr>
+              <tr>
+                <td><code>timeout</code></td>
+                <td>Integer</td>
+                <td>اختیاری</td>
+                <td>مدت زمان (بر حسب ثانیه) برای انتظار در حالت Long Polling. اگر آپدیتی در این مدت دریافت نشود، پاسخ خالی بازگردانده می‌شود. استفاده از این پارامتر باعث کاهش تعداد درخواست‌ها و بهبود کارایی می‌شود.</td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section>
+          <h2>مثال درخواست</h2>
+          <pre><code>GET https://tapi.bale.ai/bot123456789:abcdIuZmK5qNEm2A1BhUaAg7MPJv1O9KCcBQB2ro/getUpdates?offset=100&limit=50&timeout=30</code></pre>
+        </section>
+
+        <section>
+          <h2>مثال پاسخ</h2>
+          <pre><code>{
+  "ok": true,
+  "result": [
+    {
+      "update_id": 100,
+      "message": {
+        "message_id": 42,
+        "from": {
+          "id": 987654321,
+          "first_name": "کاربر",
+          "username": "user_example"
+        },
+        "chat": {
+          "id": 987654321,
+          "first_name": "کاربر",
+          "username": "user_example",
+          "type": "private"
+        },
+        "date": 1699999999,
+        "text": "سلام!"
+      }
+    }
+  ]
+}</code></pre>
+        </section>
+
+        <section>
+          <h2>نکته مهم</h2>
+          <p><strong>به منظور جلوگیری از Update های تکراری، مقدار <em>offset</em> را بعد از هر پاسخ سرور، مجدد حساب کنید.</strong></p>
+          <p>برای این کار، باید بزرگترین <code>update_id</code> دریافتی را پیدا کرده و به عنوان <code>offset</code> برای درخواست بعدی استفاده کنید (معمولاً به اضافه ۱).</p>
+        </section>
+
+        <section>
+          <h2>الگوی استفاده</h2>
+          <pre><code>// الگوی ساده برای دریافت آپدیت‌ها
+let offset = 0;
+
+async function getUpdates() {
+  const response = await fetch(
+    `https://tapi.bale.ai/bot${TOKEN}/getUpdates?offset=${offset}&timeout=30`
+  );
+  const data = await response.json();
+  
+  if (data.ok && data.result.length > 0) {
+    // پردازش آپدیت‌ها
+    for (const update of data.result) {
+      processUpdate(update);
+      // بروزرسانی offset
+      offset = update.update_id + 1;
+    }
+  }
+  
+  // فراخوانی مجدد
+  setTimeout(getUpdates, 100);
+}</code></pre>
+        </section>
+
+        <section>
+          <h2>مرحله بعد</h2>
+          <p>برای تنظیم وب‌هوک به جای long polling، بخش <a href="module-06-setWebhook.html">setWebhook</a> را مطالعه کنید.</p>
+        </section>
+      </article>
+
+      <footer>
+        <p>
+          <a href="../../index.html">← بازگشت به صفحه اصلی</a> | 
+          <a href="module-04-update.html">مرحله قبل: Update</a> |
+          <a href="module-06-setWebhook.html">مرحله بعد: setWebhook →</a>
+        </p>
+      </footer>
+    </main>
+  </div>
+
+  <script src="../../js/navigation.js"></script>
+</body>
+</html>

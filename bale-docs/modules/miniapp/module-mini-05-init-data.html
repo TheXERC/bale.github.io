@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebAppInitData و WebAppUser - داده‌های کاربر</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <article class="module-content">
+        <header>
+            <nav class="breadcrumb">
+                <a href="../../index.html">خانه</a> / 
+                <a href="../miniapp-index.html">مستندات مینی‌اپ</a> / 
+                <span>WebAppInitData و WebAppUser</span>
+            </nav>
+            <h1>WebAppInitData و WebAppUser</h1>
+        </header>
+
+        <section id="init-data">
+            <h2>WebAppInitData</h2>
+            <p>این شیء حاوی داده‌ای است که هنگام باز شدن مینی‌اپ به آن ارسال می‌شود.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>query_id</td>
+                        <td>String</td>
+                        <td>شناسه‌‌ای یکتا برای نشست مینی اپ.</td>
+                    </tr>
+                    <tr>
+                        <td>user</td>
+                        <td>WebAppUser</td>
+                        <td>شی‌ای شامل اطلاعات مربوط به کاربر فعلی.</td>
+                    </tr>
+                    <tr>
+                        <td>auth_date</td>
+                        <td>Integer</td>
+                        <td>زمان باز شدن مینی‌اپ در قالب Unix.</td>
+                    </tr>
+                    <tr>
+                        <td>hash</td>
+                        <td>String</td>
+                        <td>مقدار hash شده کل داده ارسالی. می‌توانید از آن برای اعتبارسنجی داده در سرور بازو استفاده کنید.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="webapp-user">
+            <h2>WebAppUser</h2>
+            <p>این شیء حاوی داده کاربری است که از مینی‌اپ استفاده می‌کند.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>id</td>
+                        <td>Integer</td>
+                        <td>شناسه‌ی یکتای کاربر.</td>
+                    </tr>
+                    <tr>
+                        <td>first_name</td>
+                        <td>String</td>
+                        <td>نام کاربر در بله.</td>
+                    </tr>
+                    <tr>
+                        <td>username</td>
+                        <td>String</td>
+                        <td>اختیاری. نام کاربری کاربر در بله.</td>
+                    </tr>
+                    <tr>
+                        <td>allows_write_to_pm</td>
+                        <td>Boolean</td>
+                        <td>اختیاری. مقدار true اگر این کاربر اجازه‌ی ارسال پیام توسط بازو به خود را داده باشد.</td>
+                    </tr>
+                    <tr>
+                        <td>photo_url</td>
+                        <td>String</td>
+                        <td>اختیاری. آدرس عکس پروفایل کاربر. این عکس می‌تواند در قالب jpeg یا svg باشد.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <footer class="module-footer">
+            <div class="navigation-links">
+                <a href="module-mini-04-webapp-methods.html" class="prev">← متدهای WebApp</a>
+                <a href="module-mini-06-theme-params.html" class="next">ThemeParams →</a>
+            </div>
+        </footer>
+    </article>
+    <script src="../../js/navigation.js"></script>
+</body>
+</html>

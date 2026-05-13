@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>متدهای WebApp - ارتباط با بله</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <article class="module-content">
+        <header>
+            <nav class="breadcrumb">
+                <a href="../../index.html">خانه</a> / 
+                <a href="../miniapp-index.html">مستندات مینی‌اپ</a> / 
+                <span>متدهای WebApp</span>
+            </nav>
+            <h1>متدهای WebApp</h1>
+        </header>
+
+        <section id="methods-intro">
+            <p>در این قسمت تمام متدهایی قابل استفاده شیء WebApp توضیح داده شده است. این متدها به شما این امکان را می‌دهند که بتوانید با اپلیکیشن بله و خارج از مینی‌اپ خود، ارتباط برقرار کنید. همچنین در نتیجه‌ی صدا زدن این متدها ممکن است برخی از Eventها رخ بدهند.</p>
+            <p>اگر اپلیکیشن کاربر نسخه پایینتری از مینی‌اپ را داشته باشد، با صدا زدن متد مربوط به نسخه بالاتر، اتفاقی نخواهد افتاد.</p>
+        </section>
+
+        <section id="methods-list">
+            <h2>فهرست متدها</h2>
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>نام</th>
+                        <th>نسخه</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>openLink(url, options)</code></td>
+                        <td>1.0</td>
+                        <td>با این متد می‌توانید یک پیوند را در مرورگر داخلی بله یا مرورگر پیش‌فرض دستگاه کاربر باز کنید.<br>اگر پارامتر اختیاری options دارای فیلد try_instant_view با مقدار true باشد، پیوند در مرورگر داخلی بله باز می‌شود.</td>
+                    </tr>
+                    <tr>
+                        <td><code>addToHomeScreen()</code></td>
+                        <td>1.0</td>
+                        <td>متدی برای نمایش درخواست اضافه کردن میانبر مینی‌اپ به صفحه اصلی دستگاه.</td>
+                    </tr>
+                    <tr>
+                        <td><code>checkHomeScreenStatus(callback)</code></td>
+                        <td>1.0</td>
+                        <td>این متد بررسی می‌کند که آیا امکان افزودن میانبر مینی‌اپ به صفحه اصلی وجود دارد یا نه. همچنین بررسی می‌کند که میانبر قبلاً به صفحه اصلی اضافه شده است یا خیر. اگر تابع callback به عنوان پارامتر اختیاری داده شده باشد، با یک آرگومان status فراخوانی می‌شود که یک رشته حاوی وضعیت صفحه اصلی است.<br>مقادیر ممکن برای status عبارتند از:<ul><li>unsupported – قابلیت افزودن میانبر به صفحه اصلی وجود ندارد.</li><li>unknown – این قابلیت پشتیبانی می‌شود و امکان افزودن میانبر وجود دارد، اما نمی‌توان تعیین کرد که آیا میانبر قبلاً اضافه شده است یا خیر.</li><li>added – میانبر قبلاً به صفحه اصلی اضافه شده است.</li><li>missed – میانبر به صفحه اصلی اضافه نشده است.</li></ul></td>
+                    </tr>
+                    <tr>
+                        <td><code>requestContact(callback)</code></td>
+                        <td>1.0</td>
+                        <td>فراخوانی این متد یک دیالوگ به کاربر نمایش می‌دهد و از او درخواست دسترسی به شماره تلفن می‌کند. اگر پارامتر اختیاری callback داده شده باشد، تابع callback هنگام بسته شدن دیالوگ، فراخوانی می‌شود؛ آرگومان اول یک مقدار boolean خواهد بود که نشان می‌دهد آیا کاربر شماره تلفن خود را به اشتراک گذاشته است یا خیر و آرگومان دوم، شماره تلفن همراه کاربر است.</td>
+                    </tr>
+                    <tr>
+                        <td><code>enableClosingConfirmation()</code></td>
+                        <td>1.0</td>
+                        <td>متدی برای فعال‌سازی دیالوگ تأیید بستن مینی اپ.</td>
+                    </tr>
+                    <tr>
+                        <td><code>disableClosingConfirmation()</code></td>
+                        <td>1.0</td>
+                        <td>متدی برای غیرفعال‌سازی دیالوگ تأیید بستن مینی اپ.</td>
+                    </tr>
+                    <tr>
+                        <td><code>onEvent(eventType, eventHandler)</code></td>
+                        <td>1.0</td>
+                        <td>با استفاده از این متد می‌توانید برای دریافت رویدادهای مختلفی که مینی‌اپ دریافت می‌کند، یک یا چند تابع (eventHandler) ثبت کند. فهرست تمام رویدادها را می‌توانید در بخش Events مشاهده کنید.</td>
+                    </tr>
+                    <tr>
+                        <td><code>offEvent(eventType, eventHandler)</code></td>
+                        <td>1.0</td>
+                        <td>متدی برای حذف یک event handler که قبلاً ثبت شده است.</td>
+                    </tr>
+                    <tr>
+                        <td><code>ready()</code></td>
+                        <td>1.0</td>
+                        <td>این متد به بله اطلاع می‌دهد که مینی‌اپ آماده نمایش است. پس از فراخوانی این متد، حالت بارگذاری به اتمام رسیده و مینی‌اپ نمایش داده می‌شود. اگر این متد فراخوانی نشود، حالت بارگذاری تنها زمانی به اتمام می‌رسد که صفحه به طور کامل بارگیری شود.<br>توصیه می‌کنیم این متد را در سریع‌ترین زمان ممکن و پس از بارگیری تمام عناصر ضروری رابط کاربری، فراخوانی کنید. همچنین می‌توانید پس از فراخوانی این متد، بارگذاری شخصی‌سازی شده مینی‌اپ خود را نمایش دهید.</td>
+                    </tr>
+                    <tr>
+                        <td><code>expand()</code></td>
+                        <td>1.0</td>
+                        <td>با فراخوانی این متد، مینی‌اپ در حالت تمام‌صفحه نمایش داده می‌شود.</td>
+                    </tr>
+                    <tr>
+                        <td><code>close()</code></td>
+                        <td>1.0</td>
+                        <td>متدی برای بستن مینی‌اپ.</td>
+                    </tr>
+                    <tr>
+                        <td><code>setHeaderColor(color)</code></td>
+                        <td>1.1</td>
+                        <td>با این متد می‌توانید رنگ Header مینی‌اپ را با استفاده از کلیدهای رنگی پیشفرض (bg_color یا secondary_bg_color) یا رنگ دلخواه hex (در فرمت RRGGBB#) تنظیم کنید.</td>
+                    </tr>
+                    <tr>
+                        <td><code>showScanQrPopup(data)</code></td>
+                        <td>1.2</td>
+                        <td>اسکنر QR را باز می‌کند. هنگامی که اسکنر QR را می‌خواند، ایونت qrTextReceived را ارسال می‌کند. هنگامی که اسکنر بسته می‌شود، ایونت scanQrPopupClosed را ارسال می‌کند.</td>
+                    </tr>
+                    <tr>
+                        <td><code>sendData(data)</code></td>
+                        <td>1.2</td>
+                        <td>با فراخوانی این متد data در قالب آپدیت یک پیام با فیلد web_app_data به بازو ارسال می‌شود. دیتای ارسال شده حداکثر می‌تواند ۴۰۹۶ بایت باشد.<br><strong>توجه:</strong> بعد از فراخوانی این متد مینی‌اپ بسته می‌شود.</td>
+                    </tr>
+                    <tr>
+                        <td><code>openInvoice(invoiceParams, callback)</code></td>
+                        <td>1.3</td>
+                        <td>با فراخوانی این متد، صفحه پرداخت در مینی‌اپ باز می‌شود.<br><strong>پارامترها:</strong><ul><li>پارامتر اول: invoiceParams - دقیقاً همان مقداری که از پاسخ createInvoiceLink دریافت می‌کنید را بدون تغییر پاس دهید</li><li>پارامتر دوم (اختیاری): callback function - تابعی که پس از تکمیل فرآیند پرداخت اجرا می‌شود و یک آبجکت با فیلد status که وضعیت نهایی پرداخت را نشان می‌دهد به آن ارسال می‌گردد</li></ul><strong>مقادیر ممکن برای وضعیت پرداخت (status):</strong><ul><li>paid: پرداخت با موفقیت انجام شده است</li><li>cancelled: کاربر صفحه پرداخت را بسته است</li><li>failed: کاربر تلاش کرده است که پرداخت را انجام دهد ولی موفق نشده است</li><li>pending: پرداخت در حال پردازش است</li></ul><strong>رفتار مینی‌اپ:</strong> هنگام بسته شدن صفحه پرداخت، مینی‌اپ ایونت invoiceClosed را دریافت می‌کند.<br><strong>نکته مهم:</strong> قبل از استفاده از این متد، ابتدا باید متد createInvoiceLink را فراخوانی کرده و مقدار invoiceParams را از پاسخ آن دریافت نمایید.<br><strong>توجه - نسخه‌های قدیمی اندروید:</strong> در برخی نسخه‌های قدیمی‌تر اندروید، کاربران ممکن است با مشکلات UX در انجام فرآیند پرداخت مواجه شوند. برای حل این مشکل، می‌توانید از Memory Router استفاده کنید.</td>
+                    </tr>
+                    <tr>
+                        <td><code>askReview(data)</code></td>
+                        <td>1.4</td>
+                        <td>از این متد مشابه متد askReview در API بازو، برای درخواست از کاربر جهت ثبت یا ویرایش نظر دربارهٔ بازوی خود استفاده کنند. پارامتر data دارای یک فیلد الزامی به نام delay_seconds است که میزان تأخیر را از زمان فراخوانی متد تا نمایش فرم رضایت‌سنجی مشخص می‌کند.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <footer class="module-footer">
+            <div class="navigation-links">
+                <a href="module-mini-03-implementation.html" class="prev">← پیاده‌سازی مینی‌اپ‌ها</a>
+                <a href="module-mini-05-init-data.html" class="next">WebAppInitData →</a>
+            </div>
+        </footer>
+    </article>
+    <script src="../../js/navigation.js"></script>
+</body>
+</html>

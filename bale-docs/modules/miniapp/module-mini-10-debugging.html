@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رفع اشکال و مشکلات مینی‌اپ</title>
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <article class="module-content">
+        <header>
+            <nav class="breadcrumb">
+                <a href="../../index.html">خانه</a> / 
+                <a href="../miniapp-index.html">مستندات مینی‌اپ</a> / 
+                <span>رفع اشکال</span>
+            </nav>
+            <h1>رفع اشکال و مشکلات مینی‌اپ</h1>
+        </header>
+
+        <section id="android-debugging">
+            <h2>رفع اشکال مینی‌اپ در اپلیکیشن اندروید</h2>
+            <p>برای تسهیل فرآیند توسعه و شناسایی سریع‌تر اشکالات در مینی اپ می‌توانید با فعال کردن قابلیت رفع اشکال (Debugging) به لاگ‌ها و خطاهای اپلیکیشن دسترسی پیدا کرده و مشکلات را به سرعت شناسایی کنید.</p>
+            
+            <h3>مراحل فعال‌سازی</h3>
+            <ol>
+                <li>در تنظیمات اپلیکیشن بله، گزینه نسخه را نگه دارید و حالت ارسال لاگ را فعال کنید.</li>
+                <li>از بین گزینه‌ها، گزینه "فعال‌سازی رفع اشکال وب ویو" را انتخاب کنید.</li>
+                <li>در ادامه برای استفاده از این قابلیت توضیحات مربوطه را مطالعه کنید.</li>
+            </ol>
+        </section>
+
+        <section id="web-debugging">
+            <h2>رفع اشکال باز نشدن مینی‌اپ در نسخه وب</h2>
+            <p>مینی‌اپ‌ها در نسخه وب بله از طریق iframe باز می‌شوند و ممکن است که وجود هدرهای مشخصی، مانع باز شدن مینی‌اپ شما در نسخه وب شود.</p>
+            <p>برای اطمینان از درست باز شدن مینی‌اپ در نسخه وب، از برقرار بودن موارد زیر مطمئن شوید:</p>
+            
+            <ul>
+                <li>هدر Content Security Policy (CSP) با directiveای به اسم frame-src و مقدار https://*.bale.ai موجود باشد.<br>
+                    <strong>مثال:</strong>
+                    <pre><code>Content-Security-Policy: frame-src 'https://*.bale.ai';</code></pre>
+                </li>
+                <li>هدر X-Frame-Options وجود نداشته باشد.</li>
+            </ul>
+        </section>
+
+        <section id="old-client-warning">
+            <h2>نمایش هشدار آپدیت به کاربران با کلاینت قدیمی</h2>
+            <p>ممکن است که ورژن اپلیکیشن بله بعضی از کاربران شما قدیمی باشد و از مینی‌اپ پشتیبانی نکند. با این حال اگر آن دسته از کاربران با کلاینت قدیمی، قصد باز کردن مینی‌اپ از طریق Inline Button یا Reply Keyboard Markup را داشته باشند، متوجه قدیمی بودن کلاینت خود نمی‌شوند و احتمالا فکر می‌کنند که مشکل از بازوی شماست.</p>
+            <p>برای حل این مشکل می‌توانید از فیلد <code>isMiniAppSupported</code> در WebApp استفاده کنید تا بتوانید به آن‌ها هشدار دهید که اپلیکیشن خود را به‌روزرسانی کنند.</p>
+        </section>
+
+        <section id="payment-issue">
+            <h2>مشکل پرداخت در نسخه‌های قدیمی اندروید</h2>
+            <p>در برخی نسخه‌های قدیمی‌تر اندروید، کاربران ممکن است با مشکلات UX در انجام فرآیند پرداخت مواجه شوند. برای حل این مشکل، می‌توانید از Memory Router استفاده کنید.</p>
+        </section>
+
+        <footer class="module-footer">
+            <div class="navigation-links">
+                <a href="module-mini-09-events.html" class="prev">← Events</a>
+                <a href="../miniapp-index.html" class="next">بازگشت به فهرست مینی‌اپ →</a>
+            </div>
+        </footer>
+    </article>
+    <script src="../../js/navigation.js"></script>
+</body>
+</html>

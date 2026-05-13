@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User و Chat - مستندات بازوی بله</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <nav class="module-nav">
+        <a href="../index.html">فهرست اصلی</a>
+        <span>›</span>
+        <a href="#user">User</a>
+        <span>›</span>
+        <a href="#chat">Chat</a>
+        <span>›</span>
+        <a href="#chatfullinfo">ChatFullInfo</a>
+    </nav>
+
+    <main class="module-content">
+        <header>
+            <h1>انواع کاربر و گفتگو</h1>
+            <p class="module-description">تعریف ساختارهای داده‌ای مربوط به کاربران و گفتگوها در API بله</p>
+        </header>
+
+        <section id="user" class="api-section">
+            <h2>User</h2>
+            <p>این شیء نمایندهٔ یک کاربر در بله است.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>id</td>
+                        <td>Integer</td>
+                        <td>شناسه یکتای کاربر. می‌تواند بیشتر از ۲<sup>۳۱</sup> باشد و برخی زبان‌های برنامه‌نویسی ممکن است در تفسیر آن با مشکل روبه‌رو شوند.</td>
+                    </tr>
+                    <tr>
+                        <td>is_bot</td>
+                        <td>Boolean</td>
+                        <td>آیا کاربر یک بازو است؟</td>
+                    </tr>
+                    <tr>
+                        <td>first_name</td>
+                        <td>String</td>
+                        <td>نام کوچک کاربر</td>
+                    </tr>
+                    <tr>
+                        <td>last_name</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. نام خانوادگی کاربر</td>
+                    </tr>
+                    <tr>
+                        <td>username</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. نام کاربری کاربر</td>
+                    </tr>
+                    <tr>
+                        <td>language_code</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. کد زبان ترجیحی کاربر</td>
+                    </tr>
+                    <tr>
+                        <td>is_premium</td>
+                        <td>Boolean</td>
+                        <td><em>اختیاری</em>. آیا کاربر اشتراک پریمیوم دارد؟</td>
+                    </tr>
+                    <tr>
+                        <td>added_to_attachment_menu</td>
+                        <td>Boolean</td>
+                        <td><em>اختیاری</em>. آیا این بازو به منوی پیوست‌ها اضافه شده است؟</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="chat" class="api-section">
+            <h2>Chat</h2>
+            <p>این شیء نمایندهٔ یک گفتگو (چت) در بله است.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>id</td>
+                        <td>Integer</td>
+                        <td>شناسه یکتای گفتگو. می‌تواند بیشتر از ۲<sup>۳۱</sup> باشد.</td>
+                    </tr>
+                    <tr>
+                        <td>type</td>
+                        <td>String</td>
+                        <td>نوع گفتگو که می‌تواند یکی از موارد <code>private</code>، <code>group</code> یا <code>channel</code> باشد.</td>
+                    </tr>
+                    <tr>
+                        <td>title</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. عنوان گفتگو برای گروه‌ها یا کانال‌ها</td>
+                    </tr>
+                    <tr>
+                        <td>username</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. نام کاربری برای گفتگوهای خصوصی یا کانال‌ها</td>
+                    </tr>
+                    <tr>
+                        <td>first_name</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. نام کوچک طرف مقابل در گفتگوی خصوصی</td>
+                    </tr>
+                    <tr>
+                        <td>last_name</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. نام خانوادگی طرف مقابل در گفتگوی خصوصی</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="chatfullinfo" class="api-section">
+            <h2>ChatFullInfo</h2>
+            <p>اطلاعات کامل‌تر دربارهٔ یک گفتگو.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>id</td>
+                        <td>Integer</td>
+                        <td>شناسه یکتای گفتگو</td>
+                    </tr>
+                    <tr>
+                        <td>type</td>
+                        <td>String</td>
+                        <td>نوع گفتگو</td>
+                    </tr>
+                    <tr>
+                        <td>title</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. عنوان گفتگو</td>
+                    </tr>
+                    <tr>
+                        <td>username</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. نام کاربری</td>
+                    </tr>
+                    <tr>
+                        <td>first_name</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. نام کوچک</td>
+                    </tr>
+                    <tr>
+                        <td>last_name</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. نام خانوادگی</td>
+                    </tr>
+                    <tr>
+                        <td>photo</td>
+                        <td><a href="module-15-chatmember.html#chatphoto">ChatPhoto</a></td>
+                        <td><em>اختیاری</em>. تصویر گفتگو</td>
+                    </tr>
+                    <tr>
+                        <td>bio</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. متن بخش «دربارهٔ من» کاربر</td>
+                    </tr>
+                    <tr>
+                        <td>description</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. توضیحات گروه یا کانال</td>
+                    </tr>
+                    <tr>
+                        <td>invite_link</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. پیوند دعوت</td>
+                    </tr>
+                    <tr>
+                        <td>linked_chat_id</td>
+                        <td>Integer</td>
+                        <td><em>اختیاری</em>. شناسه گفتگوی مرتبط</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <nav class="module-navigation">
+            <a href="module-08-getWebhookInfo.html" class="prev">قبلی: getWebhookInfo</a>
+            <a href="module-10-message-types.html" class="next">بعدی: Message Types</a>
+        </nav>
+    </main>
+
+    <script src="../js/navigation.js"></script>
+</body>
+</html>

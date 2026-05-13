@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="متد deleteWebhook در API بازوی بله - غیرفعال کردن وب‌هوک">
+  <title>deleteWebhook | مستندات بازوی بله</title>
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <div class="main-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <nav>
+        <h3>شروع سریع</h3>
+        <ul>
+          <li><a href="../../index.html">خانه</a></li>
+          <li><a href="module-01-bot-creation.html">ساخت بازو</a></li>
+          <li><a href="module-02-making-requests.html">ایجاد درخواست</a></li>
+          <li><a href="module-03-getting-updates.html">دریافت آپدیت‌ها</a></li>
+        </ul>
+
+        <h3>متدهای دریافت آپدیت</h3>
+        <ul>
+          <li><a href="module-04-update.html">Update</a></li>
+          <li><a href="module-05-getUpdates.html">getUpdates</a></li>
+          <li><a href="module-06-setWebhook.html">setWebhook</a></li>
+          <li><a href="module-07-deleteWebhook.html" class="active">deleteWebhook</a></li>
+          <li><a href="module-08-getWebhookInfo.html">getWebhookInfo</a></li>
+        </ul>
+
+        <h3>انواع داده‌ها</h3>
+        <ul>
+          <li><a href="module-09-user.html">User</a></li>
+          <li><a href="module-10-chat.html">Chat</a></li>
+          <li><a href="module-11-message.html">Message</a></li>
+          <li><a href="module-12-keyboard-types.html">انواع کیبورد</a></li>
+        </ul>
+
+        <h3>ارسال فایل‌ها</h3>
+        <ul>
+          <li><a href="module-13-sending-files.html">راهنمای ارسال فایل</a></li>
+        </ul>
+
+        <h3>مینی‌اپ‌ها</h3>
+        <ul>
+          <li><a href="../miniapp/index.html">معرفی مینی‌اپ</a></li>
+          <li><a href="../miniapp/module-01-intro.html">شروع به کار</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+      <header>
+        <h1>deleteWebhook</h1>
+      </header>
+
+      <article class="module-content">
+        <section>
+          <p>در صورتی که تصمیم دارید مجدداً از متد <a href="module-05-getUpdates.html">getUpdates</a> استفاده کنید، از این متد برای غیرفعال‌سازی اتصال وب‌هوک استفاده کنید.</p>
+          
+          <p>در صورت موفقیت، مقدار <em>True</em> بازگردانده می‌شود.</p>
+          
+          <pre><code>POST https://tapi.bale.ai/bot&lt;token&gt;/deleteWebhook</code></pre>
+        </section>
+
+        <section>
+          <h2>پارامترها</h2>
+          <p>این متد هیچ پارامتری نمی‌پذیرد.</p>
+        </section>
+
+        <section>
+          <h2>مثال درخواست</h2>
+          <pre><code>POST https://tapi.bale.ai/bot123456789:abcdIuZmK5qNEm2A1BhUaAg7MPJv1O9KCcBQB2ro/deleteWebhook</code></pre>
+        </section>
+
+        <section>
+          <h2>مثال پاسخ موفق</h2>
+          <pre><code>{
+  "ok": true,
+  "result": true,
+  "description": "Webhook was deleted"
+}</code></pre>
+        </section>
+
+        <section>
+          <h2>کاربردها</h2>
+          <ul>
+            <li>تغییر از وب‌هوک به long polling (getUpdates)</li>
+            <li>غیرفعال کردن موقت دریافت آپدیت‌ها</li>
+            <li>عیب‌یابی و تست</li>
+            <li>انتقال بین محیط‌های مختلف (توسعه، تولید)</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>نکات مهم</h2>
+          <ul>
+            <li>پس از حذف وب‌هوک، آپدیت‌ها دیگر به URL قبلی ارسال نمی‌شوند</li>
+            <li>آپدیت‌های جدید در سرور بله ذخیره می‌شوند تا زمانی که با getUpdates دریافت شوند</li>
+            <li>می‌توانید بعداً با استفاده از setWebhook دوباره وب‌هوک را تنظیم کنید</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>جریان معمول</h2>
+          <ol>
+            <li>تنظیم وب‌هوک با <a href="module-06-setWebhook.html">setWebhook</a></li>
+            <li>دریافت آپدیت‌ها از طریق وب‌هوک</li>
+            <li>در صورت نیاز به تغییر: <strong>deleteWebhook</strong></li>
+            <li>استفاده از <a href="module-05-getUpdates.html">getUpdates</a> برای دریافت آپدیت‌ها</li>
+          </ol>
+        </section>
+
+        <section>
+          <h2>مرحله بعد</h2>
+          <p>برای بررسی وضعیت وب‌هوک فعلی، بخش <a href="module-08-getWebhookInfo.html">getWebhookInfo</a> را مطالعه کنید.</p>
+        </section>
+      </article>
+
+      <footer>
+        <p>
+          <a href="../../index.html">← بازگشت به صفحه اصلی</a> | 
+          <a href="module-06-setWebhook.html">مرحله قبل: setWebhook</a> |
+          <a href="module-08-getWebhookInfo.html">مرحله بعد: getWebhookInfo →</a>
+        </p>
+      </footer>
+    </main>
+  </div>
+
+  <script src="../../js/navigation.js"></script>
+</body>
+</html>

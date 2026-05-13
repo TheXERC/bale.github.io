@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CallbackQuery و WebApp - مستندات بازوی بله</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <nav class="module-nav">
+        <a href="../index.html">فهرست اصلی</a>
+        <span>›</span>
+        <a href="#callbackquery">CallbackQuery</a>
+        <span>›</span>
+        <a href="#webappdata">WebAppData</a>
+        <span>›</span>
+        <a href="#webappinfo">WebAppInfo</a>
+        <span>›</span>
+        <a href="#copytextbutton">CopyTextButton</a>
+    </nav>
+
+    <main class="module-content">
+        <header>
+            <h1>پرس‌وجوهای بازخورد و Mini App</h1>
+            <p class="module-description">ساختارهای داده‌ای مربوط به تعاملات کیبورد اینلاین و Mini App</p>
+        </header>
+
+        <section id="callbackquery" class="api-section">
+            <h2>CallbackQuery</h2>
+            <p>این شیء نمایندهٔ یک پرس‌وجوی بازخورد از دکمه‌های اینلاین کیبورد است.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>id</td>
+                        <td>String</td>
+                        <td>شناسه یکتای پرس‌وجوی بازخورد</td>
+                    </tr>
+                    <tr>
+                        <td>from</td>
+                        <td><a href="module-09-user-chat.html#user">User</a></td>
+                        <td>کاربری که دکمه را فشار داده است</td>
+                    </tr>
+                    <tr>
+                        <td>message</td>
+                        <td><a href="module-10-message-types.html#message">Message</a></td>
+                        <td><em>اختیاری</em>. پیامی که دکمه اینلاین بخشی از آن است</td>
+                    </tr>
+                    <tr>
+                        <td>inline_message_id</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. شناسه پیام اینلاین (اگر پیام در حالت inline ارسال شده باشد)</td>
+                    </tr>
+                    <tr>
+                        <td>chat_instance</td>
+                        <td>String</td>
+                        <td>شناسه جهانی مربوط به چت و کاربر</td>
+                    </tr>
+                    <tr>
+                        <td>data</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. داده‌های مرتبط با دکمه (callback_data)</td>
+                    </tr>
+                    <tr>
+                        <td>game_short_name</td>
+                        <td>String</td>
+                        <td><em>اختیاری</em>. نام کوتاه بازی (برای دکمه‌های بازی)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-box">
+                <p><strong>نکته:</strong> برای پاسخ به CallbackQuery، از متد <code>answerCallbackQuery</code> استفاده کنید.</p>
+            </div>
+        </section>
+
+        <section id="webappdata" class="api-section">
+            <h2>WebAppData</h2>
+            <p>این شیء نمایندهٔ داده‌های ارسالی از طرف Mini App است.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>data</td>
+                        <td>String</td>
+                        <td>داده‌های ارسالی از Mini App به صورت رشته</td>
+                    </tr>
+                    <tr>
+                        <td>button_text</td>
+                        <td>String</td>
+                        <td>متن دکمه‌ای که برای ارسال داده استفاده شده است</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="code-example">
+                <h3>مثال دریافت در Update:</h3>
+                <pre><code>{
+  "update_id": 123456789,
+  "message": {
+    "message_id": 42,
+    "from": {...},
+    "chat": {...},
+    "date": 1234567890,
+    "web_app_data": {
+      "data": "{\"action\":\"submit\",\"value\":\"test\"}",
+      "button_text": "ارسال"
+    }
+  }
+}</code></pre>
+            </div>
+        </section>
+
+        <section id="webappinfo" class="api-section">
+            <h2>WebAppInfo</h2>
+            <p>این شیء نمایندهٔ اطلاعات یک Mini App است.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>url</td>
+                        <td>String</td>
+                        <td>URL Mini App که باید باز شود</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="info-box">
+                <p><strong>نکته:</strong> URL باید HTTPS باشد و دامنه معتبر داشته باشد.</p>
+            </div>
+        </section>
+
+        <section id="copytextbutton" class="api-section">
+            <h2>CopyTextButton</h2>
+            <p>این شیء نمایندهٔ یک دکمه کپی متن است.</p>
+            
+            <table class="api-table">
+                <thead>
+                    <tr>
+                        <th>فیلد</th>
+                        <th>نوع</th>
+                        <th>توضیحات</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>text</td>
+                        <td>String</td>
+                        <td>متنی که باید کپی شود</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="code-example">
+                <h3>مثال در InlineKeyboardButton:</h3>
+                <pre><code>{
+  "text": "کپی کد",
+  "copy_text": {
+    "text": "ABC123XYZ"
+  }
+}</code></pre>
+            </div>
+        </section>
+
+        <nav class="module-navigation">
+            <a href="module-12-keyboard-types.html" class="prev">قبلی: Keyboard Types</a>
+            <a href="module-14-chatmember-types.html" class="next">بعدی: ChatMember Types</a>
+        </nav>
+    </main>
+
+    <script src="../js/navigation.js"></script>
+</body>
+</html>

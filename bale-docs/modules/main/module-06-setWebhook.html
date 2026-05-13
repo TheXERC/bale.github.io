@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="متد setWebhook در API بازوی بله - تنظیم وب‌هوک برای دریافت آپدیت‌ها">
+  <title>setWebhook | مستندات بازوی بله</title>
+  <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+  <div class="main-layout">
+    <!-- Sidebar Navigation -->
+    <aside class="sidebar">
+      <nav>
+        <h3>شروع سریع</h3>
+        <ul>
+          <li><a href="../../index.html">خانه</a></li>
+          <li><a href="module-01-bot-creation.html">ساخت بازو</a></li>
+          <li><a href="module-02-making-requests.html">ایجاد درخواست</a></li>
+          <li><a href="module-03-getting-updates.html">دریافت آپدیت‌ها</a></li>
+        </ul>
+
+        <h3>متدهای دریافت آپدیت</h3>
+        <ul>
+          <li><a href="module-04-update.html">Update</a></li>
+          <li><a href="module-05-getUpdates.html">getUpdates</a></li>
+          <li><a href="module-06-setWebhook.html" class="active">setWebhook</a></li>
+          <li><a href="module-07-deleteWebhook.html">deleteWebhook</a></li>
+          <li><a href="module-08-getWebhookInfo.html">getWebhookInfo</a></li>
+        </ul>
+
+        <h3>انواع داده‌ها</h3>
+        <ul>
+          <li><a href="module-09-user.html">User</a></li>
+          <li><a href="module-10-chat.html">Chat</a></li>
+          <li><a href="module-11-message.html">Message</a></li>
+          <li><a href="module-12-keyboard-types.html">انواع کیبورد</a></li>
+        </ul>
+
+        <h3>ارسال فایل‌ها</h3>
+        <ul>
+          <li><a href="module-13-sending-files.html">راهنمای ارسال فایل</a></li>
+        </ul>
+
+        <h3>مینی‌اپ‌ها</h3>
+        <ul>
+          <li><a href="../miniapp/index.html">معرفی مینی‌اپ</a></li>
+          <li><a href="../miniapp/module-01-intro.html">شروع به کار</a></li>
+        </ul>
+      </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+      <header>
+        <h1>setWebhook</h1>
+      </header>
+
+      <article class="module-content">
+        <section>
+          <p>از این متد برای تعیین یک URL وب‌هوک خروجی استفاده می‌شود که از طریق آن <a href="module-04-update.html">Update</a> ها دریافت می‌شوند. زمانی که یک <a href="module-04-update.html">Update</a> برای بازو وجود دارد، یک درخواست HTTPS POST به URL مشخص‌شده ارسال خواهد شد که حاوی آپدیت JSON-serialized است.</p>
+          
+          <p>خروجی این متد در صورت اجرای موفقیت‌آمیز <em>True</em> است.</p>
+          
+          <pre><code>POST https://tapi.bale.ai/bot&lt;token&gt;/setWebhook</code></pre>
+        </section>
+
+        <section>
+          <h2>پارامترها</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>پارامتر</th>
+                <th>نوع</th>
+                <th>الزام</th>
+                <th>توضیحات</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>url</code></td>
+                <td>String</td>
+                <td>الزامی</td>
+                <td>آدرس HTTPS URL ای که Update ها باید به آن ارسال شوند. برای حذف یکپارچه‌سازی (غیرفعال کردن) وب‌هوک، یک رشته خالی را ارسال کنید.</td>
+              </tr>
+            </tbody>
+          </table>
+          
+          <p class="mt-4"><strong>نکته:</strong> درگاه‌هایی (ports) که در حال حاضر برای وب‌هوک پشتیبانی می‌شوند، عبارتند از: <code>443</code>, <code>88</code></p>
+        </section>
+
+        <section>
+          <h2>مثال درخواست</h2>
+          <pre><code>POST https://tapi.bale.ai/bot123456789:abcdIuZmK5qNEm2A1BhUaAg7MPJv1O9KCcBQB2ro/setWebhook
+Content-Type: application/json
+
+{
+  "url": "https://example.com/webhook"
+}</code></pre>
+        </section>
+
+        <section>
+          <h2>مثال پاسخ موفق</h2>
+          <pre><code>{
+  "ok": true,
+  "result": true,
+  "description": "Webhook was set"
+}</code></pre>
+        </section>
+
+        <section>
+          <h2>حذف وب‌هوک</h2>
+          <p>برای غیرفعال کردن وب‌هوک و بازگشت به حالت long polling، یک رشته خالی به عنوان URL ارسال کنید:</p>
+          <pre><code>POST https://tapi.bale.ai/bot123456789:abcdIuZmK5qNEm2A1BhUaAg7MPJv1O9KCcBQB2ro/setWebhook
+Content-Type: application/json
+
+{
+  "url": ""
+}</code></pre>
+        </section>
+
+        <section>
+          <h2>الگوی پیاده‌سازی وب‌هوک</h2>
+          <pre><code>// مثال ساده با Express.js
+const express = require('express');
+const app = express();
+
+app.use(express.json());
+
+app.post('/webhook', (req, res) => {
+  const update = req.body;
+  
+  // پردازش آپدیت
+  if (update.message) {
+    handleMessage(update.message);
+  }
+  
+  // پاسخ موفقیت‌آمیز
+  res.status(200).send('OK');
+});
+
+function handleMessage(message) {
+  const chatId = message.chat.id;
+  const text = message.text;
+  
+  // پاسخ به کاربر
+  fetch(`https://tapi.bale.ai/bot${TOKEN}/sendMessage`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      chat_id: chatId,
+      text: `شما گفتید: ${text}`
+    })
+  });
+}
+
+app.listen(3000);</code></pre>
+        </section>
+
+        <section>
+          <h2>نکات مهم</h2>
+          <ul>
+            <li>URL وب‌هوک باید حتماً HTTPS باشد</li>
+            <li>سرور شما باید گواهی SSL معتبر داشته باشد</li>
+            <li>پورت‌های پشتیبانی شده: 443 و 88</li>
+            <li>سرور شما باید بتواند درخواست‌های POST را دریافت و پردازش کند</li>
+            <li>همیشه پاسخ موفقیت‌آمیز (کد 200) به سرور بله برگردانید</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>مرحله بعد</h2>
+          <p>برای حذف وب‌هوک، بخش <a href="module-07-deleteWebhook.html">deleteWebhook</a> را مطالعه کنید.</p>
+        </section>
+      </article>
+
+      <footer>
+        <p>
+          <a href="../../index.html">← بازگشت به صفحه اصلی</a> | 
+          <a href="module-05-getUpdates.html">مرحله قبل: getUpdates</a> |
+          <a href="module-07-deleteWebhook.html">مرحله بعد: deleteWebhook →</a>
+        </p>
+      </footer>
+    </main>
+  </div>
+
+  <script src="../../js/navigation.js"></script>
+</body>
+</html>
